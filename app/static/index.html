@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intent router</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f1ea;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #e4dfd4;
+      --card: #fffcf7;
+      --accent: #1f4b3a;
+      --accent-ink: #f7f4ef;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.45 "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 16px 40px;
+    }
+    h1 { font-size: 1.45rem; font-weight: 650; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 18px; }
+    #health { font-size: 0.92rem; color: var(--muted); margin: 0 0 18px; }
+    #health.error { color: #9f1239; }
+    form {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 76px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font: inherit;
+      background: #fff;
+    }
+    textarea:focus { outline: 2px solid #b7d4c6; border-color: var(--accent); }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      margin-top: 10px;
+    }
+    label { font-size: 0.9rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+    input[type="date"] { font: inherit; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+    .spacer { flex: 1; }
+    button {
+      font: inherit;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+    button:disabled { opacity: 0.55; cursor: default; }
+    .examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+    .examples button { font-size: 0.85rem; color: var(--muted); }
+    #context-note { margin: 14px 0 0; font-size: 0.9rem; color: var(--muted); }
+    #thread { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+    article {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .you { font-weight: 600; margin: 0 0 8px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+    .status {
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 2px 8px;
+      background: #ece7dc;
+    }
+    .status.success { background: #d9f0e3; }
+    .status.needs_clarification { background: #fdecc8; }
+    .status.ambiguous { background: #fde0c8; }
+    .status.unknown, .status.invalid_input { background: #f3d6dc; }
+    .status.multi_intent { background: #d9e6f5; }
+    .question { margin: 8px 0; padding: 8px 10px; background: #f7f1df; border-radius: 8px; }
+    h2 { font-size: 1rem; margin: 12px 0 6px; }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 0; }
+    dt { color: var(--muted); }
+    dd { margin: 0; }
+    ul { margin: 4px 0 0; padding-left: 18px; }
+    .task { border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
+    details { margin-top: 10px; }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #f6f3ec;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.82rem;
+      overflow: auto;
+    }
+    .err { color: #9f1239; }
+    .who {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .who svg, .says svg { flex: 0 0 auto; }
+    .bubble {
+      margin: 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+    .handoff {
+      background: #e7f3ec;
+      border: 1px solid #9ec9b4;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-top: 8px;
+    }
+    .handoff h2 { margin-top: 0; }
+    .hint { margin: 0 0 8px; font-size: 0.85rem; color: #1f4b3a; }
+    .slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .slot {
+      background: #fff;
+      border-radius: 8px;
+      padding: 6px 8px;
+    }
+    .slot-k {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #1f4b3a;
+    }
+    .slot-v { font-weight: 650; word-break: break-word; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .chip {
+      background: #fff;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.88rem;
+    }
+    .chip b { font-weight: 650; color: #1f4b3a; }
+    .says { display: flex; gap: 10px; align-items: flex-start; }
+    .notes { color: var(--muted); }
+    .notes summary { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="who">
+      <svg width="56" height="56" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#1f4b3a"/>
+        <circle cx="23" cy="28" r="3.5" fill="#f7f4ef"/>
+        <circle cx="41" cy="28" r="3.5" fill="#f7f4ef"/>
+        <path d="M22 42c4 6 16 6 20 0" fill="none" stroke="#f7f4ef" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Intent router</h1>
+        <p class="bubble" id="speech">Send a message. I will highlight the fields the next model should use: intent, action, target, domain, and parameters.</p>
+      </div>
+    </div>
+    <p id="health">Checking the server…</p>
+
+    <form id="form">
+      <textarea id="message" name="message" placeholder="Find Python jobs in Noida" autofocus></textarea>
+      <div class="row">
+        <label><input type="checkbox" id="debug"> Include debug</label>
+        <label>Reference date <input type="date" id="reference-date"></label>
+        <span class="spacer"></span>
+        <button type="button" id="reset">New conversation</button>
+        <button class="primary" type="submit" id="send">Route</button>
+      </div>
+      <div class="examples">
+        <button type="button" data-example="Find Python jobs in Noida">Find Python jobs in Noida</button>
+        <button type="button" data-example="Only remote ones">Only remote ones</button>
+        <button type="button" data-example="Find Python jobs in Noida and compare their salaries">Two requests</button>
+        <button type="button" data-example="Book a train from Delhi to Agra on Saturday">Book a train</button>
+      </div>
+    </form>
+    <p id="context-note" hidden></p>
+    <div id="thread"></div>
+  </main>
+
+  <script>
+    const healthEl = document.getElementById("health");
+    const form = document.getElementById("form");
+    const messageEl = document.getElementById("message");
+    const debugEl = document.getElementById("debug");
+    const dateEl = document.getElementById("reference-date");
+    const sendBtn = document.getElementById("send");
+    const thread = document.getElementById("thread");
+    const note = document.getElementById("context-note");
+
+    let context = null;
+
+    const now = new Date();
+    dateEl.value = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+    function text(tag, value, className) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      node.textContent = value == null ? "" : String(value);
+      return node;
+    }
+
+    function formatValue(value) {
+      if (value == null) return "";
+      if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return String(value);
+      return JSON.stringify(value);
+    }
+
+    function slot(label, value) {
+      const box = document.createElement("div");
+      box.className = "slot";
+      const shown = value == null || value === "" ? "—" : formatValue(value);
+      box.append(text("span", label, "slot-k"), text("span", shown, "slot-v"));
+      return box;
+    }
+
+    function chips(obj) {
+      const wrap = document.createElement("div");
+      wrap.className = "chips";
+      const keys = Object.keys(obj || {});
+      if (!keys.length) {
+        wrap.append(text("span", "none", "chip"));
+        return wrap;
+      }
+      keys.forEach(function (key) {
+        const chip = document.createElement("span");
+        chip.className = "chip";
+        chip.append(text("b", key), document.createTextNode(" " + formatValue(obj[key])));
+        wrap.append(chip);
+      });
+      return wrap;
+    }
+
+    function face() {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("width", "36");
+      svg.setAttribute("height", "36");
+      svg.setAttribute("viewBox", "0 0 64 64");
+      svg.setAttribute("aria-hidden", "true");
+      function shape(tag, attrs) {
+        const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+        return node;
+      }
+      svg.append(
+        shape("circle", { cx: "32", cy: "32", r: "30", fill: "#1f4b3a" }),
+        shape("circle", { cx: "23", cy: "28", r: "3.5", fill: "#f7f4ef" }),
+        shape("circle", { cx: "41", cy: "28", r: "3.5", fill: "#f7f4ef" }),
+        shape("path", { d: "M22 42c4 6 16 6 20 0", fill: "none", stroke: "#f7f4ef", "stroke-width": "3", "stroke-linecap": "round" })
+      );
+      return svg;
+    }
+
+    function spokenLine(body) {
+      if (body.status === "success") {
+        return "Pass these highlighted fields on. Intent is " + (body.intent || "unset") + ".";
+      }
+      if (body.status === "multi_intent") {
+        const ids = (body.tasks || []).map(function (task) { return task.intent || task.status; });
+        return "Pass each task on, in order. " + ids.join(", then ") + ".";
+      }
+      if (body.clarification_question) return body.clarification_question;
+      return body.reasoning_summary || body.status;
+    }
+
+    function renderResult(body) {
+      const article = document.createElement("article");
+      article.append(text("p", body._message, "you"));
+
+      if (body.error) {
+        const says = document.createElement("div");
+        says.className = "says";
+        says.append(face(), text("p", "That request did not route. " + body.error.message, "bubble"));
+        article.append(says);
+        if (body.error.details) article.append(text("pre", JSON.stringify(body.error.details, null, 2)));
+        return article;
+      }
+
+      const line = spokenLine(body);
+      const says = document.createElement("div");
+      says.className = "says";
+      says.append(face(), text("p", line, "bubble"));
+      article.append(says);
+      document.getElementById("speech").textContent = line;
+
+      const handoff = document.createElement("section");
+      handoff.className = "handoff";
+      handoff.append(text("h2", "For the next model"));
+      handoff.append(text("p", "Use these fields. Confidence, scores, and timings stay in the notes below.", "hint"));
+
+      const slots = document.createElement("div");
+      slots.className = "slots";
+      slots.append(
+        slot("status", body.status),
+        slot("intent", body.intent),
+        slot("action", body.action),
+        slot("target", body.target),
+        slot("domain", body.domain),
+        slot("side effects", body.side_effects),
+        slot("needs confirmation", body.requires_confirmation ? "yes" : "no")
+      );
+      handoff.append(slots);
+
+      handoff.append(text("p", "Entities", "hint"));
+      handoff.append(chips(body.entities));
+      handoff.append(text("p", "Filters", "hint"));
+      handoff.append(chips(body.filters));
+
+      if (body.missing_fields && body.missing_fields.length) {
+        handoff.append(text("p", "Ask before acting. Missing: " + body.missing_fields.join(", "), "question"));
+      }
+      if (body.optional_missing_fields && body.optional_missing_fields.length) {
+        handoff.append(text("p", "Recommended: " + body.optional_missing_fields.join(", ")));
+      }
+      if (body.clarification_question && body.status !== "success") {
+        handoff.append(text("p", body.clarification_question, "question"));
+      }
+
+      if (body.tasks && body.tasks.length) {
+        handoff.append(text("h2", "Tasks"));
+        body.tasks.forEach(function (task) {
+          const block = document.createElement("div");
+          block.className = "task";
+          const taskSlots = document.createElement("div");
+          taskSlots.className = "slots";
+          taskSlots.append(
+            slot("text", task.text),
+            slot("status", task.status),
+            slot("intent", task.intent),
+            slot("action", task.action),
+            slot("target", task.target),
+            slot("domain", task.domain),
+            slot("depends on", task.depends_on && task.depends_on.length ? task.depends_on.map(function (n) { return n + 1; }).join(", ") : "none"),
+            slot("side effects", task.side_effects),
+            slot("needs confirmation", task.requires_confirmation ? "yes" : "no")
+          );
+          block.append(taskSlots);
+          block.append(text("p", "Entities", "hint"));
+          block.append(chips(task.entities));
+          block.append(text("p", "Filters", "hint"));
+          block.append(chips(task.filters));
+          if (task.missing_fields && task.missing_fields.length) {
+            block.append(text("p", "Missing: " + task.missing_fields.join(", "), "question"));
+          }
+          if (task.optional_missing_fields && task.optional_missing_fields.length) {
+            block.append(text("p", "Recommended: " + task.optional_missing_fields.join(", ")));
+          }
+          handoff.append(block);
+        });
+      }
+      article.append(handoff);
+
+      const notes = document.createElement("details");
+      notes.className = "notes";
+      notes.append(text("summary", "Router notes — not for the next model"));
+      const noteBits = [];
+      if (typeof body.confidence === "number") noteBits.push("confidence " + body.confidence + " (a heuristic, not a probability)");
+      if (body.response_time != null) noteBits.push(body.response_time + " ms");
+      if (body.resolved_by) noteBits.push("resolved by " + body.resolved_by);
+      if (body.context_used) noteBits.push("follow-up");
+      if (noteBits.length) notes.append(text("p", noteBits.join(" · ")));
+      if (body.reasoning_summary) notes.append(text("p", body.reasoning_summary));
+
+      if (body.alternatives && body.alternatives.length) {
+        notes.append(text("h2", "Alternatives"));
+        const ul = document.createElement("ul");
+        body.alternatives.forEach(function (alt) {
+          ul.append(text("li", alt.intent + " (" + alt.score + ")"));
+        });
+        notes.append(ul);
+      }
+
+      if (body.debug) {
+        const details = document.createElement("details");
+        details.open = true;
+        details.append(text("summary", "Debug"));
+        const lines = [
+          "normalized: " + body.debug.normalized_text,
+          "routing: " + body.debug.routing_text,
+          "model: " + body.debug.model
+        ];
+        if (body.debug.typo_corrections && body.debug.typo_corrections.length) {
+          lines.push("typos: " + JSON.stringify(body.debug.typo_corrections));
+        }
+        if (body.debug.timings_ms) lines.push("timings ms: " + JSON.stringify(body.debug.timings_ms));
+        details.append(text("pre", lines.join("\n")));
+        if (body.debug.top_scores) {
+          const ul = document.createElement("ul");
+          body.debug.top_scores.forEach(function (alt) {
+            ul.append(text("li", alt.intent + " " + alt.score));
+          });
+          details.append(ul);
+        }
+        notes.append(details);
+      }
+
+      const raw = document.createElement("details");
+      raw.append(text("summary", "Response JSON"));
+      const copy = Object.assign({}, body);
+      delete copy._message;
+      raw.append(text("pre", JSON.stringify(copy, null, 2)));
+      notes.append(raw);
+      article.append(notes);
+      return article;
+    }
+
+    function showContext() {
+      if (!context) {
+        note.hidden = true;
+        note.textContent = "";
+        return;
+      }
+      note.hidden = false;
+      note.textContent = "Next message includes the previous context" + (context.intent ? " (" + context.intent + ")." : ".");
+    }
+
+    async function loadHealth() {
+      try {
+        const res = await fetch("/health");
+        const body = await res.json();
+        if (!res.ok) {
+          healthEl.className = "error";
+          healthEl.textContent = (body.error && body.error.message) || "Server is not ready.";
+          return;
+        }
+        healthEl.className = "";
+        healthEl.textContent = body.model + " · " + body.intents + " intents · " + body.domains.join(", ");
+      } catch (err) {
+        healthEl.className = "error";
+        healthEl.textContent = "Cannot reach the server. Start it with run.bat and open this page at http://127.0.0.1:8000/.";
+      }
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const message = messageEl.value;
+      const options = {};
+      if (debugEl.checked) options.include_debug = true;
+      if (dateEl.value) options.reference_date = dateEl.value;
+      const payload = { message: message, options: options };
+      if (context) payload.context = context;
+
+      sendBtn.disabled = true;
+      try {
+        const res = await fetch("/route", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const body = await res.json();
+        body._message = message.trim() ? message : "(empty)";
+        if (res.ok && body.status !== "invalid_input") context = body.context || null;
+        thread.prepend(renderResult(body));
+        if (res.ok) messageEl.value = "";
+        showContext();
+      } catch (err) {
+        thread.prepend(renderResult({
+          _message: message,
+          error: { code: "network", message: "The request did not reach the server." }
+        }));
+      } finally {
+        sendBtn.disabled = false;
+        messageEl.focus();
+      }
+    });
+
+    messageEl.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        form.requestSubmit();
+      }
+    });
+
+    document.getElementById("reset").addEventListener("click", function () {
+      context = null;
+      showContext();
+      document.getElementById("speech").textContent = "Context cleared. The next message starts a new request.";
+    });
+
+    document.querySelectorAll("[data-example]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        messageEl.value = button.getAttribute("data-example");
+        messageEl.focus();
+      });
+    });
+
+    loadHealth();
+  </script>
+</body>
+</html>

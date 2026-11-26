@@ -1,0 +1,37 @@
+{
+  "_comment": "PROVISIONAL thresholds on the combined similarity score. They depend on the model, the intent examples and your input distribution. Re-tune with: python scripts/tune_thresholds.py --model <name>. They do not guarantee any accuracy level.",
+  "default": {
+    "reject": 0.35,
+    "accept": 0.5,
+    "margin": 0.04,
+    "segment_accept": 0.5
+  },
+  "models": {
+    "sentence-transformers/all-MiniLM-L6-v2": {
+      "reject": 0.25,
+      "accept": 0.45,
+      "margin": 0.02,
+      "segment_accept": 0.35,
+      "scoring": {
+        "top_k": 2,
+        "description_weight": 0.0,
+        "negative_penalty": 0.0,
+        "action_weight": 0.5,
+        "head_weight": 0.3
+      }
+    },
+    "BAAI/bge-small-en-v1.5": {
+      "reject": 0.5,
+      "accept": 0.7,
+      "margin": 0.02,
+      "segment_accept": 0.6,
+      "scoring": {
+        "top_k": 2,
+        "description_weight": 0.0,
+        "negative_penalty": 0.0,
+        "action_weight": 0.5,
+        "head_weight": 0.3
+      }
+    }
+  }
+}

@@ -1,0 +1,807 @@
+{
+  "version": "1.0",
+  "description": "Core actions and cross-domain intents. Domain extensions live in data/domains/*.json.",
+  "actions": {
+    "search": {
+      "description": "Find items that match criteria.",
+      "examples": [
+        "find some for me", "search for options that match", "are there any available",
+        "I'm looking for something like that", "show me what's out there", "look for matching ones",
+        "any good ones nearby?", "list the available options", "help me find one",
+        "where can I find some", "can you look up a few", "get me some options",
+        "recommend a few good ones", "suggest some options"
+      ]
+    },
+    "retrieve": {
+      "description": "Fetch a specific, already-known item or its status.",
+      "examples": [
+        "get my existing one", "open the one I saved", "show me my records", "where is my item",
+        "pull up the details of that one", "fetch the latest version", "check the status of mine",
+        "show my history", "track it for me", "has it arrived yet", "show me mine for that day",
+        "display what I already have"
+      ]
+    },
+    "compare": {
+      "description": "Compare two or more things.",
+      "examples": [
+        "compare these", "what's the difference between them", "which one is better",
+        "this versus that", "compare the two options", "pros and cons of each",
+        "how do they stack up against each other", "is the first better than the second?",
+        "contrast them", "compare them side by side", "which should I choose between the two"
+      ]
+    },
+    "summarize": {
+      "description": "Produce a shorter version of some content.",
+      "examples": [
+        "summarize this", "give me a short summary", "what are the key points", "tl;dr",
+        "condense this into bullet points", "give me the gist", "recap the main ideas",
+        "shorten this into a brief overview", "what's the main takeaway"
+      ]
+    },
+    "extract": {
+      "description": "Pull specific fields or values out of content.",
+      "examples": [
+        "pull out the specific values from it", "extract the details from this",
+        "list every item mentioned in it", "grab the fields from the text",
+        "get all of the entries out of this", "parse the data from this", "copy out the numbers in it"
+      ]
+    },
+    "create": {
+      "description": "Make something new: text, code, an event, a booking.",
+      "examples": [
+        "write one for me", "draft something new", "create a new one", "generate it from scratch",
+        "compose a piece", "make one", "build it", "come up with something", "prepare a new one",
+        "set one up", "remind me later", "schedule it", "book one", "reserve one"
+      ]
+    },
+    "modify": {
+      "description": "Change, cancel or reformat something that already exists.",
+      "examples": [
+        "change it", "edit this", "rewrite it differently", "update the existing one", "make it shorter",
+        "improve this", "fix the wording", "cancel it", "remove that", "convert it to another format",
+        "adjust it slightly", "send it back"
+      ]
+    },
+    "explain": {
+      "description": "Explain or answer a question about something.",
+      "examples": [
+        "what is it", "explain how this works", "why does this happen", "tell me about it",
+        "what does this mean", "how does that work?", "help me understand this", "describe it to me",
+        "what is the reason for that", "who was that"
+      ]
+    },
+    "troubleshoot": {
+      "description": "Diagnose or fix a problem.",
+      "examples": [
+        "it is not working", "fix this problem", "why am I getting an error", "it keeps crashing",
+        "something is broken", "it won't start", "help, it stopped working", "this fails every time",
+        "how do I solve this issue", "it shows an error message"
+      ]
+    },
+    "plan": {
+      "description": "Produce a plan, schedule or itinerary.",
+      "examples": [
+        "plan it out for me", "help me organize this", "create a step by step plan", "give me a roadmap",
+        "how should I prepare over the next few weeks", "work out a plan for me", "help me plan it",
+        "map out the steps"
+      ]
+    },
+    "classify": {
+      "description": "Assign a label or category.",
+      "examples": [
+        "which category does this belong to", "is this positive or negative", "label each of these",
+        "sort these into groups", "is this spam or not", "tag it with the right category", "what type is this"
+      ]
+    },
+    "translate": {
+      "description": "Translate between natural languages.",
+      "examples": [
+        "translate this", "how do you say this in another language", "what does this mean in English",
+        "convert this text into a different language", "say it in another language"
+      ]
+    },
+    "calculate": {
+      "description": "Compute a number, total or conversion.",
+      "examples": [
+        "calculate the result", "how much is it in total", "work out the total", "do the math",
+        "what's the percentage", "convert the units", "add these up", "what's the answer to this sum"
+      ]
+    },
+    "other": {
+      "description": "A request whose concrete task is not stated yet.",
+      "examples": [
+        "help me with something", "I need some help", "can you assist me", "I have a question",
+        "I'm stuck, can you help", "could you help me out"
+      ]
+    },
+    "converse": {
+      "description": "Social conversation with no task.",
+      "examples": [
+        "hi", "hello", "thanks", "how are you", "good morning", "bye", "nice to meet you",
+        "you're great", "lol", "tell me a joke", "what's up"
+      ]
+    }
+  },
+  "intents": [
+    {
+      "id": "general.question",
+      "label": "answer a general question",
+      "action": "explain",
+      "target": "information",
+      "domain": "general",
+      "description": "Answer a factual or general-knowledge question, or explain a concept in plain language.",
+      "examples": [
+        "What is photosynthesis?",
+        "Why is the sky blue?",
+        "Who invented the telephone?",
+        "How does a vaccine work?",
+        "Explain quantum computing in simple terms",
+        "What's the capital of Australia?",
+        "Tell me about the French Revolution",
+        "how do black holes form",
+        "what does inflation mean",
+        "Can you explain how compound interest works?",
+        "when did the first world war end",
+        "how far is the moon from earth",
+        "How many bones are in the human body?",
+        "What causes earthquakes?",
+        "Why do leaves change colour in autumn?",
+        "Who was the first person to walk on the moon?",
+        "What are the symptoms of dehydration?",
+        "Why is the ocean salty?",
+        "How do solar panels generate electricity?",
+        "what does that word mean",
+        "why does that happen",
+        "who was that person",
+        "Why do we have seasons?",
+        "How does the human heart pump blood?",
+        "Who wrote Pride and Prejudice?",
+        "What language is spoken in Brazil?",
+        "How old is the universe?",
+        "What do pandas eat?",
+        "How does a refrigerator keep food cold?",
+        "Is coffee bad for your health?"
+      ],
+      "negative_examples": [
+        "explain what this Python function does",
+        "search the web for the latest news about black holes",
+        "what's the difference between a virus and bacteria"
+      ],
+      "parameters": [
+        {"name": "topic", "types": ["quoted_text", "topic"]}
+      ],
+      "operation": "answer_question"
+    },
+    {
+      "id": "web.search",
+      "label": "search the web",
+      "action": "search",
+      "target": "web_results",
+      "domain": "general",
+      "description": "Search the internet for current information, news, articles or web pages.",
+      "examples": [
+        "Search the web for the latest news on electric cars",
+        "Google the release date of the next iPhone",
+        "Look up reviews of the new Batman movie online",
+        "find articles about climate change policy",
+        "What's the latest news about the stock market?",
+        "search online for vegetarian lasagna recipes",
+        "look up today's cricket score",
+        "find me some blogs about minimalism",
+        "check what people are saying online about the new GTA game",
+        "browse the internet for remote work statistics",
+        "look up the latest updates on this topic",
+        "search online for information about it",
+        "find recent news articles on that",
+        "google it for me"
+      ],
+      "negative_examples": [
+        "find Java developer jobs in Pune",
+        "find a cheap laptop under 40000",
+        "find the termination clause in this contract"
+      ],
+      "parameters": [
+        {"name": "query", "types": ["quoted_text", "topic"], "required": true,
+         "question": "What should I search for?"},
+        {"name": "date", "types": ["date_range", "date"], "kind": "filter"}
+      ],
+      "operation": "web_search"
+    },
+    {
+      "id": "general.compare",
+      "label": "compare things",
+      "action": "compare",
+      "target": "items",
+      "domain": "general",
+      "description": "Compare two or more things, options or concepts and explain their differences.",
+      "examples": [
+        "Compare Python and Java",
+        "What's the difference between a virus and bacteria?",
+        "Which is better for beginners, guitar or piano?",
+        "pros and cons of renting vs buying a house",
+        "how does living in Pune compare to Bangalore",
+        "SQL vs NoSQL, which should I use?",
+        "contrast capitalism and socialism",
+        "compare them for me",
+        "compare the prices of these",
+        "which of these options is cheaper"
+      ],
+      "negative_examples": [
+        "Compare iPhone 15 and Pixel 8",
+        "find a cheap laptop"
+      ],
+      "parameters": [
+        {"name": "items", "types": ["comparison_items"], "multiple": true},
+        {"name": "criteria", "types": ["comparison_criteria"], "multiple": true}
+      ],
+      "operation": "compare"
+    },
+    {
+      "id": "general.recommend",
+      "label": "recommend something to read, watch or do",
+      "action": "search",
+      "target": "recommendations",
+      "domain": "general",
+      "description": "Suggest books, movies, music, places, restaurants or activities.",
+      "examples": [
+        "Suggest a good book to read this weekend",
+        "recommend a movie for tonight",
+        "what are some good places to visit in Kerala?",
+        "any podcasts about history you'd recommend?",
+        "suggest a nice restaurant for a birthday dinner",
+        "what should I watch on Netflix",
+        "give me some hobby ideas for the weekend",
+        "recommend songs similar to Coldplay"
+      ],
+      "negative_examples": [
+        "recommend a laptop for video editing under 80000",
+        "plan a 3 day trip to Kerala"
+      ],
+      "parameters": [
+        {"name": "topic", "types": ["topic"]},
+        {"name": "location", "types": ["location"]}
+      ],
+      "operation": "recommend"
+    },
+    {
+      "id": "text.translate",
+      "label": "translate text",
+      "action": "translate",
+      "target": "text",
+      "domain": "general",
+      "description": "Translate text or a phrase from one natural language into another.",
+      "examples": [
+        "Translate this sentence into French",
+        "How do you say 'thank you' in Japanese?",
+        "translate 'where is the station' to Spanish",
+        "Can you convert this paragraph from English to Hindi?",
+        "what does 'gracias' mean in English",
+        "I need this email in German",
+        "translate the following text to Tamil",
+        "say good morning in Korean"
+      ],
+      "negative_examples": [
+        "convert this JavaScript code to TypeScript",
+        "convert 5 miles to kilometers"
+      ],
+      "parameters": [
+        {"name": "target_language", "types": ["target_language"], "required": true,
+         "question": "Which language should it be translated into?"},
+        {"name": "source_language", "types": ["source_language"]},
+        {"name": "text", "types": ["quoted_text", "content"]}
+      ],
+      "operation": "translate"
+    },
+    {
+      "id": "math.calculate",
+      "label": "calculate a value",
+      "action": "calculate",
+      "target": "numeric_result",
+      "domain": "general",
+      "description": "Do arithmetic, percentages, unit or currency conversion, loan or bill calculations.",
+      "examples": [
+        "What is 15% of 2400?",
+        "calculate 234 * 56",
+        "convert 5 miles to kilometers",
+        "How much is 120 USD in INR?",
+        "what's the square root of 144",
+        "Calculate the EMI for a 5 lakh loan at 9% interest for 3 years",
+        "add 45, 78 and 112",
+        "how many days are there between March 3 and July 19",
+        "split a 2400 rupee bill between 3 people",
+        "what is 18% GST on 15000"
+      ],
+      "negative_examples": [
+        "convert this paragraph to Hindi",
+        "find laptops under 50000"
+      ],
+      "parameters": [
+        {"name": "expression", "types": ["math_expression"]},
+        {"name": "values", "types": ["money", "percentage", "quantity", "duration", "number"], "multiple": true}
+      ],
+      "operation": "calculate"
+    },
+    {
+      "id": "text.classify",
+      "label": "classify or label text",
+      "action": "classify",
+      "target": "text",
+      "domain": "general",
+      "description": "Assign a category, label, sentiment or spam/not-spam judgement to some text.",
+      "examples": [
+        "Is this email spam?",
+        "What's the sentiment of this review?",
+        "Categorize these support tickets by urgency",
+        "classify this news article into a topic",
+        "is this comment positive or negative",
+        "tag these products into categories",
+        "detect whether this message is toxic",
+        "which department should this complaint go to?"
+      ],
+      "parameters": [
+        {"name": "text", "types": ["quoted_text", "content"]},
+        {"name": "document", "types": ["file", "document_ref"]}
+      ],
+      "operation": "classify"
+    },
+    {
+      "id": "conversation.chitchat",
+      "label": "chat",
+      "action": "converse",
+      "target": "conversation",
+      "domain": "general",
+      "description": "Greetings, thanks, small talk and questions about the assistant itself.",
+      "examples": [
+        "hi",
+        "hello there",
+        "good morning!",
+        "how are you doing?",
+        "thanks a lot",
+        "thank you, that was helpful",
+        "tell me a joke",
+        "who are you?",
+        "what can you do?",
+        "bye, see you later",
+        "you're awesome",
+        "I'm bored, let's chat",
+        "thanks for your help",
+        "cheers, that really helped",
+        "great, thank you so much",
+        "hey there, how's your day"
+      ],
+      "negative_examples": [
+        "can you help me with my phone"
+      ],
+      "operation": "chat"
+    },
+    {
+      "id": "general.help_request",
+      "label": "get help (task not specified yet)",
+      "action": "other",
+      "target": null,
+      "domain": "general",
+      "description": "A vague request for help that names a subject but not what should be done.",
+      "examples": [
+        "Can you help me with something?",
+        "I need help with my phone",
+        "can you assist me with Java",
+        "help me with my homework",
+        "I have a question about my account",
+        "could you help me out with a problem",
+        "I'm stuck with my project, can you help",
+        "I need some assistance"
+      ],
+      "negative_examples": [
+        "help me write a cover letter",
+        "help me fix this KeyError in my code",
+        "thanks for your help"
+      ],
+      "parameters": [
+        {"name": "subject", "types": ["topic"]}
+      ],
+      "always_clarify": "Sure. What would you like me to do?",
+      "operation": "ask_for_details"
+    },
+    {
+      "id": "document.summarize",
+      "label": "summarize a document or text",
+      "action": "summarize",
+      "target": "document",
+      "domain": "documents",
+      "description": "Summarize an article, document, email thread, notes or pasted text.",
+      "examples": [
+        "Summarize this article",
+        "Give me a short summary of the attached PDF",
+        "tl;dr this report please",
+        "Can you condense these meeting notes into bullet points?",
+        "what are the key points of this document",
+        "summarise the following text",
+        "give me the gist of this email thread",
+        "boil this paper down to 3 sentences",
+        "recap the main ideas from the chapter",
+        "too long, just tell me what it says",
+        "what's the gist of this email",
+        "I don't have time to read this whole thing",
+        "condense this long thread for me",
+        "what are the main points in this presentation"
+      ],
+      "negative_examples": [
+        "extract all the dates from this contract",
+        "rewrite this paragraph to be shorter"
+      ],
+      "parameters": [
+        {"name": "document", "types": ["file", "url", "document_ref"]},
+        {"name": "content", "types": ["content"]},
+        {"name": "length", "types": ["length_constraint"]},
+        {"name": "format", "types": ["output_format"]}
+      ],
+      "operation": "summarize"
+    },
+    {
+      "id": "document.extract",
+      "label": "extract information from a document",
+      "action": "extract",
+      "target": "document_fields",
+      "domain": "documents",
+      "description": "Pull specific fields, values, tables or lists out of a document or text.",
+      "examples": [
+        "Extract all the email addresses from this file",
+        "pull the dates and amounts out of these invoices",
+        "Get the table on page 4 of the PDF into a spreadsheet",
+        "list every person mentioned in this article",
+        "extract the key clauses from the contract",
+        "grab the invoice number and total from this receipt",
+        "parse the names and addresses from this document",
+        "get all the action items out of these meeting notes"
+      ],
+      "negative_examples": [
+        "summarize this contract",
+        "find the section about refunds in this policy"
+      ],
+      "parameters": [
+        {"name": "fields", "types": ["data_field"], "multiple": true, "recommended": true},
+        {"name": "document", "types": ["file", "url", "document_ref"]},
+        {"name": "format", "types": ["output_format"]}
+      ],
+      "operation": "extract_fields"
+    },
+    {
+      "id": "document.create",
+      "label": "write a document or message",
+      "action": "create",
+      "target": "document",
+      "domain": "documents",
+      "description": "Write or draft new text: letters, emails, essays, posts, resumes, proposals, poems.",
+      "examples": [
+        "Write a cover letter for a data analyst position",
+        "Draft an email to my manager asking for leave",
+        "Create a project proposal for a mobile app",
+        "write a blog post about remote work",
+        "compose a thank you note for my teacher",
+        "help me write my resume",
+        "generate a product description for wireless earbuds",
+        "write a LinkedIn post announcing my new job",
+        "I need a formal letter to the bank to close my account",
+        "write a short poem about the monsoon"
+      ],
+      "negative_examples": [
+        "write a Python function to reverse a string",
+        "rewrite this email to sound more polite"
+      ],
+      "parameters": [
+        {"name": "document_type", "types": ["document_type"], "recommended": true},
+        {"name": "recipient", "types": ["recipient"]},
+        {"name": "tone", "types": ["tone"]},
+        {"name": "length", "types": ["length_constraint"]},
+        {"name": "details", "types": ["topic"]}
+      ],
+      "operation": "draft_document"
+    },
+    {
+      "id": "document.rewrite",
+      "label": "edit or rewrite existing text",
+      "action": "modify",
+      "target": "text",
+      "domain": "documents",
+      "description": "Rewrite, proofread, shorten, simplify or change the tone of existing text.",
+      "examples": [
+        "Rewrite this paragraph to sound more professional",
+        "fix the grammar in my essay",
+        "this message sounds too harsh, soften it",
+        "tighten up this paragraph",
+        "make this email shorter",
+        "paraphrase the following sentence",
+        "can you proofread this?",
+        "change the tone of this message to friendly",
+        "simplify this text for a 10-year-old",
+        "edit my cover letter to remove repetition",
+        "improve the wording of this introduction"
+      ],
+      "negative_examples": [
+        "write a new cover letter for me",
+        "refactor this function"
+      ],
+      "parameters": [
+        {"name": "tone", "types": ["tone"]},
+        {"name": "length", "types": ["length_constraint"]},
+        {"name": "document", "types": ["file", "document_ref"]},
+        {"name": "content", "types": ["content", "quoted_text"]}
+      ],
+      "operation": "rewrite_text"
+    },
+    {
+      "id": "document.search",
+      "label": "find something inside a document",
+      "action": "search",
+      "target": "document_content",
+      "domain": "documents",
+      "description": "Locate a section, clause, mention or passage inside a specific document or notes.",
+      "examples": [
+        "Find the section about refunds in this policy",
+        "where does the contract mention termination?",
+        "search my notes for anything about the Q3 budget",
+        "which page talks about safety guidelines",
+        "look for the clause on late payment fees in the agreement",
+        "does this document say anything about remote work?",
+        "find all mentions of Acme Corp in the report",
+        "does the policy say anything about overtime?",
+        "where in this document is the warranty discussed",
+        "find the paragraph that talks about pricing",
+        "is there a mention of penalties in this agreement",
+        "look through my notes for what the client said about delivery"
+      ],
+      "negative_examples": [
+        "search the web for refund policies",
+        "extract all email addresses from this file"
+      ],
+      "parameters": [
+        {"name": "query", "types": ["quoted_text", "topic"]},
+        {"name": "document", "types": ["file", "document_ref"]}
+      ],
+      "operation": "search_document"
+    },
+    {
+      "id": "records.retrieve",
+      "label": "open or fetch an existing record",
+      "action": "retrieve",
+      "target": "record",
+      "domain": "general",
+      "description": "Open, show or fetch a specific existing item the user already has: a file, report, statement, calendar or notes.",
+      "examples": [
+        "Open my last invoice",
+        "show me the Q3 sales report",
+        "get my bank statement for September",
+        "pull up the notes from yesterday's meeting",
+        "show my calendar for tomorrow",
+        "fetch the latest version of the design doc",
+        "display my saved addresses",
+        "show me my appointments this week",
+        "open last year's tax return"
+      ],
+      "negative_examples": [
+        "where is my order",
+        "summarize the Q3 sales report"
+      ],
+      "parameters": [
+        {"name": "record", "types": ["file", "identifier", "document_ref", "document_type"]},
+        {"name": "date", "types": ["date_range", "date"], "kind": "filter"}
+      ],
+      "side_effects": "read",
+      "operation": "fetch_record"
+    },
+    {
+      "id": "programming.write_code",
+      "label": "write code",
+      "action": "create",
+      "target": "code",
+      "domain": "programming",
+      "description": "Write new code: functions, scripts, queries, regexes, components or tests.",
+      "examples": [
+        "Write a Python function to reverse a string",
+        "generate a SQL query that finds duplicate emails",
+        "create a REST API endpoint in FastAPI for user login",
+        "code a binary search in Java",
+        "give me a bash script to rename all .txt files",
+        "I need a regex that matches Indian phone numbers",
+        "build a React component for a login form",
+        "write unit tests for this function",
+        "implement quicksort in C++"
+      ],
+      "negative_examples": [
+        "fix the bug in this Python function",
+        "explain what this function does",
+        "write a cover letter"
+      ],
+      "parameters": [
+        {"name": "language", "types": ["technology"], "multiple": true, "recommended": true},
+        {"name": "task", "types": ["topic"]}
+      ],
+      "operation": "generate_code"
+    },
+    {
+      "id": "programming.debug",
+      "label": "debug code",
+      "action": "troubleshoot",
+      "target": "code",
+      "domain": "programming",
+      "description": "Diagnose and fix errors, exceptions, failing builds or wrong behaviour in code.",
+      "examples": [
+        "Why does my Python script throw a KeyError?",
+        "fix this bug in my JavaScript code",
+        "my React app shows a blank page after build",
+        "I'm getting NullPointerException in Java, help",
+        "this SQL query returns duplicate rows, what's wrong?",
+        "npm install fails with permission denied",
+        "segmentation fault in my C program",
+        "my code works locally but fails in Docker",
+        "TypeError: cannot read properties of undefined, how do I fix it",
+        "pip can't find the module even though I installed it"
+      ],
+      "negative_examples": [
+        "my wifi keeps disconnecting",
+        "write a Python function to parse dates"
+      ],
+      "parameters": [
+        {"name": "language", "types": ["technology"], "multiple": true, "recommended": true},
+        {"name": "error", "types": ["error_message"]},
+        {"name": "code", "types": ["code"]}
+      ],
+      "operation": "debug_code"
+    },
+    {
+      "id": "programming.explain_code",
+      "label": "explain code or a programming concept",
+      "action": "explain",
+      "target": "code",
+      "domain": "programming",
+      "description": "Explain what a piece of code, command, regex or programming concept does.",
+      "examples": [
+        "Explain what this function does",
+        "what does this regex mean",
+        "walk me through this SQL query line by line",
+        "how does this recursive function work?",
+        "what is the purpose of async/await in JavaScript",
+        "what does git rebase do",
+        "explain this code snippet",
+        "what does the yield keyword do in Python"
+      ],
+      "negative_examples": [
+        "What is photosynthesis?",
+        "fix this bug",
+        "write a function that reverses a list"
+      ],
+      "parameters": [
+        {"name": "language", "types": ["technology"], "multiple": true},
+        {"name": "code", "types": ["code", "quoted_text"]},
+        {"name": "topic", "types": ["topic"]}
+      ],
+      "operation": "explain_code"
+    },
+    {
+      "id": "programming.refactor",
+      "label": "refactor or convert code",
+      "action": "modify",
+      "target": "code",
+      "domain": "programming",
+      "description": "Refactor, optimize, clean up, or convert existing code to another language or style.",
+      "examples": [
+        "Refactor this function to be more readable",
+        "optimize this SQL query for speed",
+        "convert this JavaScript code to TypeScript",
+        "rewrite this loop using list comprehension",
+        "make this code more efficient",
+        "clean up this class and remove duplication",
+        "port this Python 2 code to Python 3",
+        "add type hints to this module"
+      ],
+      "negative_examples": [
+        "rewrite this paragraph to sound formal",
+        "why does this code crash"
+      ],
+      "parameters": [
+        {"name": "language", "types": ["technology"], "multiple": true},
+        {"name": "code", "types": ["code"]}
+      ],
+      "operation": "refactor_code"
+    },
+    {
+      "id": "support.troubleshoot",
+      "label": "fix a device, app or account problem",
+      "action": "troubleshoot",
+      "target": "device_or_service",
+      "domain": "general",
+      "description": "Help with a problem in a device, app, internet connection or online account (not source code).",
+      "examples": [
+        "My wifi keeps disconnecting",
+        "laptop won't turn on after the update",
+        "printer says offline but it's connected",
+        "my phone battery drains really fast",
+        "I can't log into my email account",
+        "the app crashes when I upload a photo",
+        "bluetooth headphones won't pair with my laptop",
+        "netflix keeps buffering",
+        "my computer has become very slow lately",
+        "the microphone isn't picking up my voice on calls",
+        "my smartwatch stopped syncing with my phone"
+      ],
+      "negative_examples": [
+        "my Python script throws a KeyError",
+        "find a new laptop under 50000"
+      ],
+      "parameters": [
+        {"name": "device", "types": ["product", "brand"]},
+        {"name": "error", "types": ["error_message"]}
+      ],
+      "operation": "tech_support"
+    },
+    {
+      "id": "planning.create_plan",
+      "label": "make a plan or itinerary",
+      "action": "plan",
+      "target": "plan",
+      "domain": "planning",
+      "description": "Create a plan, itinerary, schedule, roadmap or step-by-step program.",
+      "examples": [
+        "Plan a 3-day trip to Goa",
+        "make a study timetable for my exams next month",
+        "help me plan my week",
+        "create a workout plan for beginners",
+        "I want to organize a birthday party for 20 people, help me plan",
+        "what should my roadmap be to learn data science in 6 months",
+        "plan a budget-friendly weekend in Jaipur",
+        "give me a step-by-step plan to launch my online store",
+        "draw up a meal plan for weight loss",
+        "itinerary for 5 days in Kerala"
+      ],
+      "negative_examples": [
+        "remind me to call mom at 6 pm",
+        "book a flight to Goa"
+      ],
+      "parameters": [
+        {"name": "destination", "types": ["destination", "location"]},
+        {"name": "duration", "types": ["duration"]},
+        {"name": "date", "types": ["date_range", "date"]},
+        {"name": "people", "types": ["people_count"]},
+        {"name": "budget", "types": ["money_constraint", "money"]},
+        {"name": "price_preference", "types": ["price_preference"], "kind": "filter"},
+        {"name": "goal", "types": ["topic"]}
+      ],
+      "operation": "make_plan"
+    },
+    {
+      "id": "planning.schedule_event",
+      "label": "set a reminder or schedule an event",
+      "action": "create",
+      "target": "calendar_event",
+      "domain": "planning",
+      "description": "Create a reminder, alarm, meeting or calendar event at a date or time.",
+      "examples": [
+        "Remind me to call mom at 6 pm",
+        "schedule a meeting with the design team tomorrow at 10am",
+        "set an alarm for 7 tomorrow morning",
+        "add dentist appointment on Friday at 4pm to my calendar",
+        "set up a call with Rahul next Monday",
+        "create a reminder to pay rent on the 1st",
+        "put a team standup every weekday at 9:30",
+        "don't let me forget to submit the report by Thursday",
+        "nudge me at 5 to leave for the gym",
+        "alert me on Friday about the car service",
+        "wake me up at 6 tomorrow"
+      ],
+      "negative_examples": [
+        "plan my week",
+        "show my calendar for tomorrow"
+      ],
+      "parameters": [
+        {"name": "title", "types": ["reminder_task"]},
+        {"name": "date", "types": ["date", "date_range"]},
+        {"name": "time", "types": ["time", "part_of_day"]},
+        {"name": "participants", "types": ["person"], "multiple": true}
+      ],
+      "required_any": [["date", "time"]],
+      "required_any_question": "When should it be scheduled?",
+      "side_effects": "write",
+      "operation": "create_calendar_entry"
+    }
+  ]
+}

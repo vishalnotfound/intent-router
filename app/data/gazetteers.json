@@ -1,0 +1,103 @@
+{
+  "_comment": "Known values for deterministic extraction. Format: {entity_type: {canonical: [aliases]}}. Matching is case-insensitive on word boundaries; simple plurals are accepted. Domain files in data/domains may add more.",
+  "technology": {
+    "Python": ["python"], "Java": ["java"], "JavaScript": ["javascript", "js"], "TypeScript": ["typescript"],
+    "C++": ["c++", "cpp"], "C#": ["c#", "csharp"], "C": ["c language", "c program", "c programming"],
+    "Go": ["golang"], "Rust": ["rust"], "Ruby": ["ruby"], "PHP": ["php"], "Kotlin": ["kotlin"],
+    "Swift": ["swift"], "Scala": ["scala"], "R": ["r programming", "r language"], "Dart": ["dart"],
+    "SQL": ["sql"], "MySQL": ["mysql"], "PostgreSQL": ["postgresql", "postgres"], "MongoDB": ["mongodb", "mongo"],
+    "Redis": ["redis"], "SQLite": ["sqlite"], "Oracle": ["oracle db", "oracle database"],
+    "React": ["react", "reactjs", "react.js"], "React Native": ["react native"], "Angular": ["angular"],
+    "Vue": ["vue", "vuejs", "vue.js"], "Next.js": ["next.js", "nextjs"], "Node.js": ["node.js", "nodejs", "node"],
+    "Express": ["express.js", "expressjs"], "Django": ["django"], "Flask": ["flask"], "FastAPI": ["fastapi"],
+    "Spring Boot": ["spring boot", "spring framework"], ".NET": [".net", "dotnet", "asp.net"], "Laravel": ["laravel"],
+    "Flutter": ["flutter"], "Android": ["android"], "iOS": ["ios"],
+    "HTML": ["html"], "CSS": ["css"], "Tailwind CSS": ["tailwind"], "Bootstrap": ["bootstrap"],
+    "AWS": ["aws", "amazon web services"], "Azure": ["azure"], "GCP": ["gcp", "google cloud"],
+    "Docker": ["docker"], "Kubernetes": ["kubernetes", "k8s"], "Terraform": ["terraform"], "Jenkins": ["jenkins"],
+    "Git": ["git", "github", "gitlab"], "Linux": ["linux", "ubuntu"], "Bash": ["bash", "shell script"],
+    "PowerShell": ["powershell"], "Pandas": ["pandas"], "NumPy": ["numpy"], "TensorFlow": ["tensorflow"],
+    "PyTorch": ["pytorch"], "scikit-learn": ["scikit-learn", "sklearn"], "Machine Learning": ["machine learning"],
+    "Deep Learning": ["deep learning"], "Data Science": ["data science"], "NLP": ["nlp"],
+    "Excel": ["excel", "ms excel"], "Power BI": ["power bi", "powerbi"], "Tableau": ["tableau"],
+    "Figma": ["figma"], "Selenium": ["selenium"], "GraphQL": ["graphql"], "Regex": ["regex", "regular expression"],
+    "npm": ["npm"], "pip": ["pip"], "Salesforce": ["salesforce"], "SAP": ["sap"], "Unity": ["unity3d"],
+    "Hadoop": ["hadoop"], "Spark": ["apache spark", "pyspark"], "Kafka": ["kafka"], "Airflow": ["airflow"]
+  },
+  "location": {
+    "Noida": ["noida"], "Greater Noida": ["greater noida"], "Delhi": ["delhi", "new delhi", "ncr", "delhi ncr"],
+    "Gurgaon": ["gurgaon", "gurugram"], "Ghaziabad": ["ghaziabad"], "Faridabad": ["faridabad"],
+    "Mumbai": ["mumbai", "bombay"], "Navi Mumbai": ["navi mumbai"], "Thane": ["thane"], "Pune": ["pune"],
+    "Bangalore": ["bangalore", "bengaluru"], "Hyderabad": ["hyderabad"], "Chennai": ["chennai", "madras"],
+    "Kolkata": ["kolkata", "calcutta"], "Ahmedabad": ["ahmedabad"], "Jaipur": ["jaipur"], "Chandigarh": ["chandigarh"],
+    "Lucknow": ["lucknow"], "Indore": ["indore"], "Bhopal": ["bhopal"], "Nagpur": ["nagpur"], "Surat": ["surat"],
+    "Kochi": ["kochi", "cochin"], "Coimbatore": ["coimbatore"], "Mysore": ["mysore", "mysuru"],
+    "Thiruvananthapuram": ["thiruvananthapuram", "trivandrum"], "Patna": ["patna"], "Bhubaneswar": ["bhubaneswar"],
+    "Dehradun": ["dehradun"], "Shimla": ["shimla"], "Manali": ["manali"], "Rishikesh": ["rishikesh"],
+    "Agra": ["agra"], "Varanasi": ["varanasi"], "Udaipur": ["udaipur"], "Amritsar": ["amritsar"],
+    "Visakhapatnam": ["visakhapatnam", "vizag"], "Vadodara": ["vadodara", "baroda"], "Mohali": ["mohali"],
+    "Goa": ["goa"], "Kerala": ["kerala"], "Karnataka": ["karnataka"], "Maharashtra": ["maharashtra"],
+    "Tamil Nadu": ["tamil nadu"], "Rajasthan": ["rajasthan"], "Punjab": ["punjab"], "Gujarat": ["gujarat"],
+    "Uttar Pradesh": ["uttar pradesh"], "Himachal Pradesh": ["himachal pradesh", "himachal"],
+    "Ladakh": ["ladakh"], "Kashmir": ["kashmir"], "Andaman": ["andaman"], "Connaught Place": ["connaught place"],
+    "India": ["india"], "USA": ["usa", "united states", "america"], "UK": ["uk", "united kingdom", "england"],
+    "Canada": ["canada"], "Australia": ["australia"], "Germany": ["germany"], "France": ["france"],
+    "Japan": ["japan"], "Singapore": ["singapore"], "UAE": ["uae"], "Dubai": ["dubai"], "Thailand": ["thailand"],
+    "Bangkok": ["bangkok"], "Bali": ["bali"], "Nepal": ["nepal"], "Kathmandu": ["kathmandu"], "Sri Lanka": ["sri lanka"],
+    "Maldives": ["maldives"], "London": ["london"], "Paris": ["paris"], "Berlin": ["berlin"], "Amsterdam": ["amsterdam"],
+    "Dublin": ["dublin"], "New York": ["new york", "nyc"], "San Francisco": ["san francisco"], "Seattle": ["seattle"],
+    "Toronto": ["toronto"], "Sydney": ["sydney"], "Tokyo": ["tokyo"], "Hong Kong": ["hong kong"]
+  },
+  "natural_language": {
+    "English": ["english"], "Hindi": ["hindi"], "French": ["french"], "Spanish": ["spanish"], "German": ["german"],
+    "Japanese": ["japanese"], "Chinese": ["chinese", "mandarin"], "Korean": ["korean"], "Arabic": ["arabic"],
+    "Russian": ["russian"], "Portuguese": ["portuguese"], "Italian": ["italian"], "Bengali": ["bengali", "bangla"],
+    "Tamil": ["tamil"], "Telugu": ["telugu"], "Marathi": ["marathi"], "Gujarati": ["gujarati"], "Kannada": ["kannada"],
+    "Malayalam": ["malayalam"], "Punjabi": ["punjabi"], "Urdu": ["urdu"], "Dutch": ["dutch"], "Turkish": ["turkish"]
+  },
+  "document_type": {
+    "email": ["email", "e-mail", "mail"], "cover letter": ["cover letter"], "resume": ["resume", "cv", "résumé"],
+    "letter": ["letter"], "report": ["report"], "essay": ["essay"], "proposal": ["proposal"],
+    "blog post": ["blog post", "blog", "article"], "LinkedIn post": ["linkedin post"], "tweet": ["tweet"],
+    "social media post": ["social media post", "instagram caption", "caption"], "memo": ["memo"],
+    "presentation": ["presentation", "slide deck", "slides", "ppt"], "invoice": ["invoice"], "contract": ["contract", "agreement"],
+    "job description": ["job description", "jd"], "product description": ["product description"],
+    "meeting notes": ["meeting notes", "minutes"], "poem": ["poem"], "story": ["story", "short story"],
+    "speech": ["speech"], "thank you note": ["thank you note", "thank-you note"], "documentation": ["documentation", "readme"],
+    "statement": ["statement", "bank statement"], "message": ["message", "text message"]
+  },
+  "tone": {
+    "formal": ["formal"], "professional": ["professional"], "casual": ["casual", "informal"],
+    "friendly": ["friendly", "warm"], "polite": ["polite"], "persuasive": ["persuasive"], "concise": ["concise", "crisp"],
+    "detailed": ["detailed"], "humorous": ["funny", "humorous", "witty"], "simple": ["simple", "plain english", "easy to understand"],
+    "empathetic": ["empathetic"], "confident": ["confident"]
+  },
+  "output_format": {
+    "bullet points": ["bullet points", "bullets", "bulleted list", "bullet list"], "table": ["table", "tabular"],
+    "json": ["json"], "csv": ["csv"], "spreadsheet": ["spreadsheet", "excel sheet", "google sheet"],
+    "paragraph": ["paragraph", "one paragraph"], "markdown": ["markdown"], "numbered list": ["numbered list"]
+  },
+  "data_field": {
+    "email addresses": ["email addresses", "email address", "emails", "email ids"],
+    "phone numbers": ["phone numbers", "phone number", "contact numbers", "mobile numbers"],
+    "dates": ["dates", "date"], "names": ["names", "name", "people mentioned", "person names"],
+    "addresses": ["addresses", "address"],
+    "amounts": ["amounts", "totals", "total", "prices", "figures"], "invoice number": ["invoice number", "invoice numbers", "invoice no"],
+    "tables": ["tables"], "links": ["links", "urls"], "keywords": ["keywords"],
+    "action items": ["action items", "todos", "to-dos"], "clauses": ["clauses", "key clauses"],
+    "skills": ["skills"], "headings": ["headings", "titles"]
+  },
+  "price_preference": {
+    "low": ["cheap", "affordable", "budget", "budget-friendly", "inexpensive", "low cost", "low-cost", "economical", "value for money", "on a budget"],
+    "mid": ["mid-range", "mid range", "midrange"],
+    "high": ["premium", "high-end", "high end", "luxury", "flagship"]
+  },
+  "sort": {
+    "price_asc": ["cheapest", "lowest price", "low to high", "least expensive"],
+    "price_desc": ["most expensive", "high to low", "highest price"],
+    "newest": ["newest", "latest", "most recent"],
+    "rating_desc": ["top rated", "top-rated", "best rated", "highest rated", "best reviewed"],
+    "popularity_desc": ["most popular", "best selling", "best-selling", "bestseller", "bestsellers", "trending"],
+    "distance_asc": ["nearest", "closest"]
+  }
+}

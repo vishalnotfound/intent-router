@@ -1,0 +1,420 @@
+%PDF-1.4
+1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
+2 0 obj << /Type /Pages /Count 5 /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] >> endobj
+3 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj
+4 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> endobj
+5 0 obj << /Length 8320 >> stream
+BT /F2 26.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 770.00 Tm (Intent Router) Tj ET
+BT /F1 14.00 Tf 0.250 0.230 0.200 rg 1 0 0 1 48.00 750.00 Tm (End-to-end architecture) Tj ET
+1.20 w 0.120 0.290 0.230 RG 48.00 746.00 m 547.00 746.00 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 721.50 Tm (A local, CPU-only natural-language intent router. A message goes in. Validated JSON comes out: what the) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 707.00 Tm (user wants, with which parameters, and how sure that reading is. The process never searches, books,) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 692.50 Tm (cancels, or writes. The caller does that.) Tj ET
+0.910 0.950 0.930 rg 48.00 646.50 499.00 38.00 re f
+BT /F1 10.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 56.00 668.50 Tm (The embedding model only compares meanings. It never writes the JSON. Dates, cities, prices, and skills) Tj ET
+BT /F1 10.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 56.00 654.50 Tm (come from deterministic extractors. Pydantic checks the result before it leaves the engine.) Tj ET
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 620.50 Tm (1. What one request does) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 620.50 m 120.00 620.50 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 598.00 Tm (run.bat starts uvicorn on 127.0.0.1:8000. At startup, app/main.py builds one IntentService. That loads the) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 583.50 Tm (intent registry, the MiniLM sentence model, the extractors, the typo corrector, and the precomputed intent) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 569.00 Tm (embeddings. A ready process reports 31 intents and 8 domains. Later requests only classify.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 550.50 Tm (POST /route calls IntentService.route, which checks the message length and then calls) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 536.00 Tm (RouterEngine.route. The same engine is what python -m app.cli uses. GET / serves the small HTML client) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 521.50 Tm (in app/static/index.html, so the page and the API share an origin.) Tj ET
+0.120 0.290 0.230 rg 48.00 493.50 499.00 20.00 re f
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 500.50 Tm (Step) Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 88.00 500.50 Tm (Where) Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 198.00 500.50 Tm (What happens) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 493.50 m 547.00 493.50 l S
+0.960 0.950 0.930 rg 48.00 461.50 499.00 32.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 480.50 Tm (1) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 480.50 Tm (normalize.prepare) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 480.50 Tm (Unicode NFKC, strip control characters, and peel pasted articles and code off the) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 468.50 Tm (instruction so they do not dominate the embedding.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 461.50 m 547.00 461.50 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 448.50 Tm (2) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 448.50 Tm (extractors) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 448.50 Tm (Regex and gazetteer spans for dates, money, cities, skills, emails, and similar values.) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 436.50 Tm (This does not depend on the intent, so it runs first.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 429.50 m 547.00 429.50 l S
+0.960 0.950 0.930 rg 48.00 397.50 499.00 32.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 416.50 Tm (3) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 416.50 Tm (mask + typos) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 416.50 Tm (Routing view only. 'Find Python jobs in Noida' becomes a generic sentence, then likely) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 404.50 Tm (typos are fixed. The original text is kept.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 397.50 m 547.00 397.50 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 384.50 Tm (4) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 384.50 Tm (Embedder.encode) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 384.50 Tm (One batch: full routing text, its first few words, each clause, and previous-plus-current) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 372.50 Tm (text when the caller sent context.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 365.50 m 547.00 365.50 l S
+0.960 0.950 0.930 rg 48.00 333.50 499.00 32.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 352.50 Tm (5) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 352.50 Tm (IntentIndex.score) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 352.50 Tm (Top-2 mean similarity to each intent's examples, blended with the head view, minus an) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 340.50 Tm (action-stage penalty.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 333.50 m 547.00 333.50 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 320.50 Tm (6) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 320.50 Tm (confidence.decide) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 320.50 Tm (unknown, ambiguous, low confidence, or accept. Then guards for gibberish, lone) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 308.50 Tm (nouns, follow-ups, and unsupported intents.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 301.50 m 547.00 301.50 l S
+0.960 0.950 0.930 rg 48.00 269.50 499.00 32.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 288.50 Tm (7) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 288.50 Tm (map_parameters) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 288.50 Tm (Spans fill only fields that intent declares. A missing required field forces a clarification) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 276.50 Tm (question.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 269.50 m 547.00 269.50 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 256.50 Tm (8) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 88.00 256.50 Tm (RouteResult) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 256.50 Tm (Pydantic schema 1.0. An updated ConversationContext is returned for the caller to) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 198.00 244.50 Tm (store and send back.) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 237.50 m 547.00 237.50 l S
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 213.50 Tm (2. Why the scoring is built this way) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 213.50 m 120.00 213.50 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 191.00 Tm (Small sentence encoders follow the topic more than the verb. These cosines were measured with MiniLM) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 176.50 Tm (while the router was built:) Tj ET
+0.120 0.290 0.230 rg 48.00 148.50 499.00 20.00 re f
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 155.50 Tm (Pair) Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 481.00 155.50 Tm (Cosine) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 148.50 m 547.00 148.50 l S
+0.960 0.950 0.930 rg 48.00 128.50 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 135.50 Tm (Find Python jobs in Noida vs Compare Python jobs in Noida) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 135.50 Tm (0.85) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 128.50 m 547.00 128.50 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 115.50 Tm (Find Python jobs in Noida vs Find Java jobs in Pune) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 115.50 Tm (0.31) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 108.50 m 547.00 108.50 l S
+0.960 0.950 0.930 rg 48.00 88.50 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 95.50 Tm (Write a function to merge two dictionaries vs reverse a string) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 95.50 Tm (0.33) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 88.50 m 547.00 88.50 l S
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 48.00 28 Tm (Local intent router. Predictions only; the service does not execute them.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 495.00 28 Tm (1 / 5) Tj ET
+endstream
+endobj
+6 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 5 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >> endobj
+7 0 obj << /Length 7764 >> stream
+BT /F1 9.00 Tf 0.400 0.380 0.350 rg 1 0 0 1 48.00 787.00 Tm (Intent Router  �  architecture) Tj ET
+0.60 w 0.780 0.750 0.700 RG 48.00 788.00 m 547.00 788.00 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 761.50 Tm (Plain nearest-example matching would call 'compare' a search, and would treat Java in Pune as a different) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 747.00 Tm (intent from Python in Noida. Three pieces correct that.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 728.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 728.50 Tm (Delexicalization replaces places, technologies, names, and prices with generic words, on the message) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 714.00 Tm (and on the registry examples. Before this, the three 'Python jobs in Noida' paraphrases did not reach) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 699.50 Tm (jobs.search in the top 3 \(best example similarity 0.31\). After it they scored about 0.77 to 0.91.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 683.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 683.00 Tm (The head view embeds the first few words, where the verb usually sits, and blends that similarity into) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 668.50 Tm (the full-text score. On in-scope development cases this lifted raw top-1 accuracy from 0.91 to 0.97.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 652.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 652.00 Tm (The action stage compares the message with topic-free phrases such as 'compare these'. The topic) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 637.50 Tm (shifts every action about equally, so the verb decides. Intents whose action trails the best action are) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 623.00 Tm (penalized. For MiniLM that weight is 0.5.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 606.50 Tm (Each intent can also carry negative examples. Tuning found no gain, so the shipped negative-example) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 592.00 Tm (weight is 0 for both models. ROUTER_NEGATIVE_PENALTY can turn it back on.) Tj ET
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 568.00 Tm (3. How a status is chosen) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 568.00 m 120.00 568.00 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 545.50 Tm (MiniLM thresholds in app/data/thresholds.json are reject 0.25, accept 0.45, margin 0.02, and) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 531.00 Tm (segment_accept 0.35. BGE uses a higher band \(0.50 / 0.70 / 0.02\) because its similarities sit higher.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 516.50 Tm (Gibberish scores about 0.54 on BGE, so MiniLM's reject would accept noise there. Thresholds are per) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 502.00 Tm (model.) Tj ET
+0.120 0.290 0.230 rg 48.00 474.00 499.00 20.00 re f
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 481.00 Tm (Situation) Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 421.00 481.00 Tm (Status) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 474.00 m 547.00 474.00 l S
+0.960 0.950 0.930 rg 48.00 454.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 461.00 Tm (Empty, or no letters or digits) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 421.00 461.00 Tm (invalid_input) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 454.00 m 547.00 454.00 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 441.00 Tm (Fewer than half the words are recognizable, or best score below reject) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 421.00 441.00 Tm (unknown) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 434.00 m 547.00 434.00 l S
+0.960 0.950 0.930 rg 48.00 414.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 421.00 Tm (Closest intent is a known unsupported kind of request) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 421.00 421.00 Tm (unknown) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 414.00 m 547.00 414.00 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 401.00 Tm (Runner-up within the margin, or a lone noun such as 'Python') Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 421.00 401.00 Tm (ambiguous) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 394.00 m 547.00 394.00 l S
+0.960 0.950 0.930 rg 48.00 374.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 381.00 Tm (Score between reject and accept, a vague help request, or a missing required field) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 421.00 381.00 Tm (needs_clarification) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 374.00 m 547.00 374.00 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 361.00 Tm (Two or more clauses that each clear segment_accept) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 421.00 361.00 Tm (multi_intent) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 354.00 m 547.00 354.00 l S
+0.960 0.950 0.930 rg 48.00 334.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 341.00 Tm (Otherwise) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 421.00 341.00 Tm (success) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 334.00 m 547.00 334.00 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 315.50 Tm (confidence is a heuristic in [0, 1]. It mixes how far the best score sits above reject with how far it leads the) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 301.00 Tm (runner-up. 0.8 does not mean 'right 80 percent of the time', and it is never an authorization signal.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 286.50 Tm (side_effects \(none, read, write, destructive, financial\) and requires_confirmation are labels for the caller.) Tj ET
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 262.50 Tm (4. Follow-ups, several requests, parameters) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 262.50 m 120.00 262.50 l S
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 238.00 Tm (No hidden session) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 222.00 Tm (The engine keeps no conversation state. The caller sends back the context object from the previous) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 207.50 Tm (response. A short phrase with no verb of its own, such as 'only remote ones', merges into that intent and is) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 193.00 Tm (marked context_used. A message with its own verb is a new request. The same follow-up with no context) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 178.50 Tm (returns needs_clarification and asks what the earlier request was.) Tj ET
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 158.00 Tm (Several requests in one message) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 142.00 Tm (The segmenter only proposes clause boundaries \(punctuation, 'and then', a new verb\). The engine keeps) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 127.50 Tm (the split when each clause scores on its own. 'Find Python jobs in Noida and compare their salaries') Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 113.00 Tm (becomes two tasks: jobs.search, then general.compare, and the second depends on the first because it) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 98.50 Tm (refers back. A weak split that does not hold up is ignored and the whole message is routed as one request.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 48.00 28 Tm (Local intent router. Predictions only; the service does not execute them.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 495.00 28 Tm (2 / 5) Tj ET
+endstream
+endobj
+8 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 7 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >> endobj
+9 0 obj << /Length 7526 >> stream
+BT /F1 9.00 Tf 0.400 0.380 0.350 rg 1 0 0 1 48.00 787.00 Tm (Intent Router  �  architecture) Tj ET
+0.60 w 0.780 0.750 0.700 RG 48.00 788.00 m 547.00 788.00 l S
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 759.50 Tm (Parameters) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 743.50 Tm (Extractors return spans with the exact source text. They do not invent a currency for '50k' or guess a city) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 729.00 Tm (that was not written. Overlapping spans keep the higher-priority, then the longer one. map_parameters fills) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 714.50 Tm (only the parameters that the chosen intent declares, as entities or filters. Required gaps produce a) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 700.00 Tm (clarification question. Recommended gaps, such as role on a job search, are listed but do not block) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 685.50 Tm (success.) Tj ET
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 661.50 Tm (5. What the next step should read) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 661.50 m 120.00 661.50 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 639.00 Tm (The HTML page at http://127.0.0.1:8000/ draws a small guide and a green block labeled 'For the next) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 624.50 Tm (model'. Those are the fields a later model or tool-caller should act on:) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 606.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 606.00 Tm (status, intent, action, target, and domain) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 589.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 589.50 Tm (entities and filters, including values merged from an earlier turn) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 573.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 573.00 Tm (tasks, in order, with depends_on, when the status is multi_intent) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 556.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 556.50 Tm (missing fields and the clarification question, when the router is not ready to commit) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 540.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 540.00 Tm (side_effects and requires_confirmation, so a destructive or financial step is not treated like a read) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 523.50 Tm (Confidence, alternative scores, the reasoning summary, timings, and debug text stay outside that block.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 509.00 Tm (They explain the decision. They are not the instruction. The page sends the previous context back) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 494.50 Tm (automatically. New conversation drops it. Include debug sets options.include_debug. The reference date is) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 480.00 Tm ('today' for words like tomorrow; the page sends the browser's local date.) Tj ET
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 456.00 Tm (6. How the code is split) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 456.00 m 120.00 456.00 l S
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 431.50 Tm (HTTP edge) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 415.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 415.50 Tm (app/main.py builds the service once in the FastAPI lifespan, rejects bodies over 256 KB, serves the) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 401.00 Tm (HTML page at /, and returns errors without echoing the user's text.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 384.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 384.50 Tm (app/api/routes.py is POST /route and GET /health. The route handler only calls service.route.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 368.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 368.00 Tm (app/api/schemas.py is the request: message, optional context, and options \(include_debug,) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 353.50 Tm (reference_date\). Extra fields are rejected.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 337.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 337.00 Tm (app/cli.py is the same router from the terminal, including an interactive session that carries context.) Tj ET
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 318.50 Tm (Composition and contracts) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 302.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 302.50 Tm (app/services/intent_service.py is the object built at startup. route\(\) checks length, times the call, and) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 288.00 Tm (logs. health\(\) reports the model, counts, and thresholds. Raw text is logged only when log_messages is) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 273.50 Tm (on.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 257.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 257.00 Tm (app/core/config.py reads defaults, a .env file, and ROUTER_* environment variables, then resolves) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 242.50 Tm (per-model thresholds.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 226.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 226.00 Tm (app/core/schemas.py is schema 1.0: RouteResult, Task, ConversationContext, Status. extra is forbid.) Tj ET
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 207.50 Tm (Router) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 191.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 191.50 Tm (app/router/engine.py is the stateless pipeline: prepare, extract, mask, embed, score, decide, map,) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 177.00 Tm (validate.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 160.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 160.50 Tm (app/router/normalize.py cleans text, separates pasted content, masks entities, and corrects typos on) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 146.00 Tm (the routing view only.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 129.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 129.50 Tm (app/router/registry.py loads intents.json plus every domain JSON and then stays read-only.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 113.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 113.00 Tm (app/router/similarity.py scores examples, the head view, negatives, and the action stage, and caches) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 98.50 Tm (registry embeddings on disk.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 82.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 82.00 Tm (app/router/confidence.py turns scores into accept, low_confidence, ambiguous, or unknown.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 48.00 28 Tm (Local intent router. Predictions only; the service does not execute them.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 495.00 28 Tm (3 / 5) Tj ET
+endstream
+endobj
+10 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 9 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >> endobj
+11 0 obj << /Length 7004 >> stream
+BT /F1 9.00 Tf 0.400 0.380 0.350 rg 1 0 0 1 48.00 787.00 Tm (Intent Router  �  architecture) Tj ET
+0.60 w 0.780 0.750 0.700 RG 48.00 788.00 m 547.00 788.00 l S
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 761.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 761.50 Tm (app/router/segmenter.py proposes clauses. app/router/fallback.py is off by default.) Tj ET
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 743.00 Tm (Meaning versus parameters) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 727.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 727.00 Tm (app/models/loader.py loads the sentence-transformer once. Offline by default \(local_files_only\). It fails) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 712.50 Tm (fast if the model was never downloaded.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 696.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 696.00 Tm (app/models/embeddings.py returns L2-normalized vectors, so a dot product is cosine. A lock serializes) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 681.50 Tm (CPU inference so concurrent passes do not oversubscribe the cores.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 665.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 665.00 Tm (app/extractors/rules.py, entities.py, and pipeline.py parse values, resolve overlaps, and map spans onto) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 650.50 Tm (intent parameters.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 634.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 634.00 Tm (app/services/context_service.py detects follow-up phrasing and merges entities and filters.) Tj ET
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 612.00 Tm (7. Data, API, and how to run it) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 612.00 m 120.00 612.00 l S
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 587.50 Tm (Files under app/data) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 571.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 571.50 Tm (intents.json holds core actions \(search, compare, summarize, and the rest\) with topic-neutral example) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 557.00 Tm (phrases, plus cross-domain intents.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 540.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 540.50 Tm (domains/*.json plugs in jobs, ecommerce, travel, and unsupported. The eight domains in a running) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 526.00 Tm (registry are general, documents, programming, planning, jobs, ecommerce, travel, and unsupported. A) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 511.50 Tm (new domain is a JSON file. The engine does not change. Retune thresholds if the score distribution) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 497.00 Tm (moves.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 480.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 480.50 Tm (gazetteers.json holds known values such as cities, skills, and languages.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 464.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 464.00 Tm (thresholds.json holds per-model reject, accept, margin, segment_accept, and scoring weights. The file) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 449.50 Tm (marks them provisional.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 433.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 433.00 Tm (eval/*.jsonl holds the hand-written dev, test, holdout, and final sets. Tune on dev. Report test, holdout,) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 418.50 Tm (and final.) Tj ET
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 400.00 Tm (Request and response) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 384.00 Tm (POST /route takes { message, context, options }. options.include_debug adds scores and timings.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 369.50 Tm (options.reference_date is the date used for relative phrases. GET /health returns the model name, intent) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 355.00 Tm (count, domains, thresholds, scoring weights, and startup milliseconds.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 336.50 Tm (413 means the message or the body is too long. 422 means the JSON does not match the schema. 503) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 322.00 Tm (means the router is still starting. Error bodies look like { error: { code, message, details } } and do not echo) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 307.50 Tm (the submitted text.) Tj ET
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 287.00 Tm (Run and test) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 271.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 271.00 Tm (Windows: run.bat from the project folder. It uses .venv when that interpreter exists, otherwise Python on) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 256.50 Tm (PATH.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 240.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 240.00 Tm (First download, the only step that needs the network: python scripts/download_models.py. After that the) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 225.50 Tm (router loads with local files only.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 209.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 209.00 Tm (Open http://127.0.0.1:8000/ for the page, or http://127.0.0.1:8000/docs for the generated API docs.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 192.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 192.50 Tm (python -m pytest runs the suite. It loads the model once and takes about a minute.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 178.00 Tm (tests/test_extraction.py and tests/test_schema.py do not need the model.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 161.50 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 161.50 Tm (python scripts/evaluate.py --split test reports held-out numbers. scripts/tune_thresholds.py searches) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 147.00 Tm (weights and thresholds on the dev split only. The objective is macro-F1 over intents plus a reject class,) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 132.50 Tm (so a false accept and a false reject both cost.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 48.00 28 Tm (Local intent router. Predictions only; the service does not execute them.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 495.00 28 Tm (4 / 5) Tj ET
+endstream
+endobj
+12 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 11 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >> endobj
+13 0 obj << /Length 8836 >> stream
+BT /F1 9.00 Tf 0.400 0.380 0.350 rg 1 0 0 1 48.00 787.00 Tm (Intent Router  �  architecture) Tj ET
+0.60 w 0.780 0.750 0.700 RG 48.00 788.00 m 547.00 788.00 l S
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 756.00 Tm (8. What was measured) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 756.00 m 120.00 756.00 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 733.50 Tm (Figures below are from the project README. They were measured on a development PC \(Intel Core) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 719.00 Tm (i5-14400, 16 GB, Windows 11, Python 3.12, CPU PyTorch\), not on the smaller target machine. The same) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 704.50 Tm (encode has measured 5 ms in one session and 24 ms in another. Treat them as orders of magnitude and) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 690.00 Tm (re-run scripts/benchmark.py on the machine that will serve traffic.) Tj ET
+0.120 0.290 0.230 rg 48.00 662.00 499.00 20.00 re f
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 669.00 Tm (MiniLM route\(\) stage) Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 411.00 669.00 Tm (p50) Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 481.00 669.00 Tm (p95) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 662.00 m 547.00 662.00 l S
+0.960 0.950 0.930 rg 48.00 642.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 649.00 Tm (Extraction) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 411.00 649.00 Tm (0.5 ms) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 649.00 Tm (2.9 ms) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 642.00 m 547.00 642.00 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 629.00 Tm (Embedding \(the batched forward pass\)) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 411.00 629.00 Tm (14.1 ms) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 629.00 Tm (22.6 ms) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 622.00 m 547.00 622.00 l S
+0.960 0.950 0.930 rg 48.00 602.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 609.00 Tm (Scoring) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 411.00 609.00 Tm (2.0 ms) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 609.00 Tm (2.3 ms) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 602.00 m 547.00 602.00 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 589.00 Tm (Decision and parameter mapping) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 411.00 589.00 Tm (0.15 ms) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 589.00 Tm (0.19 ms) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 582.00 m 547.00 582.00 l S
+0.960 0.950 0.930 rg 48.00 562.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 569.00 Tm (Total route\(\) time) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 411.00 569.00 Tm (17.2 ms) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 481.00 569.00 Tm (26.0 ms) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 562.00 m 547.00 562.00 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 543.50 Tm (Four concurrent clients reached about 56 requests per second. The embedder lock queues them, so) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 529.00 Tm (throughput per process is about 1 / latency. More throughput means more worker processes, each with its) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 514.50 Tm (own model, about 450 to 500 MB. A single encode of registry phrases is cached under .cache/embeddings) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 500.00 Tm (and is rebuilt when the phrases change.) Tj ET
+0.120 0.290 0.230 rg 48.00 472.00 499.00 20.00 re f
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 52.00 479.00 Tm () Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 212.00 479.00 Tm (all-MiniLM-L6-v2) Tj ET
+BT /F2 9.00 Tf 1.000 1.000 1.000 rg 1 0 0 1 381.50 479.00 Tm (bge-small-en-v1.5) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 472.00 m 547.00 472.00 l S
+0.960 0.950 0.930 rg 48.00 452.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 459.00 Tm (macro-F1, final / holdout) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 212.00 459.00 Tm (0.877 / 0.875) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 381.50 459.00 Tm (0.934 / 0.865) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 452.00 m 547.00 452.00 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 439.00 Tm (latency p50 / p95) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 212.00 439.00 Tm (16.5 / 26.1 ms) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 381.50 439.00 Tm (27.3 / 45.0 ms) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 432.00 m 547.00 432.00 l S
+0.960 0.950 0.930 rg 48.00 412.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 419.00 Tm (4 clients) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 212.00 419.00 Tm (56 req/s) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 381.50 419.00 Tm (34 req/s) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 412.00 m 547.00 412.00 l S
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 399.00 Tm (weights on disk) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 212.00 399.00 Tm (about 90 MB) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 381.50 399.00 Tm (about 130 MB) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 392.00 m 547.00 392.00 l S
+0.960 0.950 0.930 rg 48.00 372.00 499.00 20.00 re f
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 52.00 379.00 Tm (reject / accept / margin) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 212.00 379.00 Tm (0.25 / 0.45 / 0.02) Tj ET
+BT /F1 9.00 Tf 0.140 0.120 0.110 rg 1 0 0 1 381.50 379.00 Tm (0.50 / 0.70 / 0.02) Tj ET
+0.40 w 0.860 0.830 0.780 RG 48.00 372.00 m 547.00 372.00 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 353.50 Tm (BGE won on the final split and lost on holdout, so the accuracy gap is not conclusive. MiniLM stays the) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 339.00 Tm (default. Switch with ROUTER_MODEL_NAME=BAAI/bge-small-en-v1.5 and keep that model's thresholds.) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 320.50 Tm (During development, dev macro-F1 moved from 0.78 \(examples, action stage, and delexicalization\) to 0.85) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 306.00 Tm (with follow-up and lone-noun rules, to 0.89 with the head view, and to 0.95 after tuning. That last number is) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 291.50 Tm (in-sample. It is not the number to quote as accuracy.) Tj ET
+BT /F2 16.00 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 267.50 Tm (9. Optional fallback, and the limits) Tj ET
+1.40 w 0.120 0.290 0.230 RG 48.00 267.50 m 120.00 267.50 l S
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 245.00 Tm (ROUTER_FALLBACK defaults to none. Set to local_llm, a small local instruction model may pick one intent) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 230.50 Tm (id from the candidates the embedding stage already proposed, or unknown. Its reply must be valid JSON. It) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 216.00 Tm (cannot invent entities, and a bad reply is ignored. The user message is passed as quoted data, not as) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 48.00 201.50 Tm (instructions to the fallback model.) Tj ET
+BT /F2 12.50 Tf 0.110 0.100 0.090 rg 1 0 0 1 48.00 181.00 Tm (Say these out loud) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 165.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 165.00 Tm (Follow-ups are phrase-based. A full new sentence that happens to look like a refinement can be) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 150.50 Tm (merged into the previous intent.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 134.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 134.00 Tm (Typo correction can rewrite a rare real word toward the domain vocabulary. It changes the routing text) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 119.50 Tm (only, not the text shown back as the user's message.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 103.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 103.00 Tm (Confidence is uncalibrated. Do not gate a payment or a cancellation on it. Use requires_confirmation) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 88.50 Tm (and side_effects for that judgment in the caller.) Tj ET
+BT /F2 10.50 Tf 0.120 0.290 0.230 rg 1 0 0 1 48.00 72.00 Tm (-) Tj ET
+BT /F1 10.50 Tf 0.140 0.120 0.110 rg 1 0 0 1 62.00 72.00 Tm (The router predicts. Nothing in this service performs the intent.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 48.00 28 Tm (Local intent router. Predictions only; the service does not execute them.) Tj ET
+BT /F1 8.5 Tf 0.40 0.38 0.35 rg 1 0 0 1 495.00 28 Tm (5 / 5) Tj ET
+endstream
+endobj
+14 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 13 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> >> endobj
+xref
+0 15
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000142 00000 n 
+0000000212 00000 n 
+0000000287 00000 n 
+0000008658 00000 n 
+0000008794 00000 n 
+0000016609 00000 n 
+0000016745 00000 n 
+0000024322 00000 n 
+0000024459 00000 n 
+0000031515 00000 n 
+0000031653 00000 n 
+0000040541 00000 n 
+trailer << /Size 15 /Root 1 0 R >>
+startxref
+40679
+%%EOF

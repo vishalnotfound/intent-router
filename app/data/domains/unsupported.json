@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "description": "Kinds of requests this deployment does NOT handle. Matching one returns status 'unknown' instead of a weak guess at a supported intent. Remove entries (or this file) if your application supports them.",
+  "actions": {
+    "operate": {
+      "description": "Directly operate a device, app, account or service.",
+      "examples": [
+        "turn it on", "switch it off", "play it", "pause it", "send it now", "pay it", "start it",
+        "make it louder", "open it", "stop it"
+      ]
+    }
+  },
+  "intents": [
+    {
+      "id": "unsupported.device_or_service_control",
+      "label": "control a device, app or account",
+      "action": "operate",
+      "target": null,
+      "domain": "unsupported",
+      "description": "Commands to operate smart-home devices, phones, computers, media players, messaging, calls, payments, money transfers, trading or food delivery.",
+      "examples": [
+        "switch on the porch light",
+        "make the room warmer",
+        "set the AC to cooling mode",
+        "play my workout playlist",
+        "pause the music",
+        "call mom on speaker",
+        "send a message to the team group chat",
+        "transfer money to my savings account",
+        "buy bitcoin worth 1000 rupees",
+        "order dinner from a nearby restaurant",
+        "turn on bluetooth",
+        "increase the screen brightness",
+        "lock the car doors",
+        "start the washing machine",
+        "take a photo",
+        "open the camera app"
+      ],
+      "negative_examples": [
+        "my bluetooth headphones won't connect",
+        "find a washing machine under 30000"
+      ],
+      "out_of_scope": true,
+      "operation": null
+    }
+  ]
+}

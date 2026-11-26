@@ -1,0 +1,123 @@
+{"id": "test-001", "category": "direct", "text": "Search the internet for reviews of the Tata Nexon EV", "expected": {"label": "web.search"}}
+{"id": "test-002", "category": "direct", "text": "How do airplanes stay in the air?", "expected": {"label": "general.question"}}
+{"id": "test-003", "category": "direct", "text": "Translate 'see you tomorrow' to German", "expected": {"label": "text.translate", "entities": {"target_language": "German", "text": "see you tomorrow"}}}
+{"id": "test-004", "category": "direct", "text": "Calculate 18% of 4500", "expected": {"label": "math.calculate"}}
+{"id": "test-005", "category": "direct", "text": "Can you summarize the attached PDF?", "expected": {"label": "document.summarize"}}
+{"id": "test-006", "category": "direct", "text": "Pull out every email address in this spreadsheet", "expected": {"label": "document.extract", "entities": {"fields": ["email addresses"]}}}
+{"id": "test-007", "category": "direct", "text": "Write a thank-you email to my interviewer", "expected": {"label": "document.create", "entities": {"document_type": "email"}}}
+{"id": "test-008", "category": "direct", "text": "Fix the grammar in this paragraph", "expected": {"label": "document.rewrite"}}
+{"id": "test-009", "category": "direct", "text": "Write a Python script that renames files by date", "expected": {"label": "programming.write_code", "entities": {"language": ["Python"]}}}
+{"id": "test-010", "category": "direct", "text": "Getting ModuleNotFoundError when I run my Django app", "expected": {"label": "programming.debug", "entities": {"error": "ModuleNotFoundError", "language": ["Django"]}}}
+{"id": "test-011", "category": "direct", "text": "What does the map function do in JavaScript?", "expected": {"label": "programming.explain_code", "entities": {"language": ["JavaScript"]}}}
+{"id": "test-012", "category": "direct", "text": "Convert this Python 2 script to Python 3", "expected": {"label": "programming.refactor"}}
+{"id": "test-013", "category": "direct", "text": "Data analyst jobs in Chennai", "expected": {"label": "jobs.search", "entities": {"role": "data analyst", "location": "Chennai"}}}
+{"id": "test-014", "category": "direct", "text": "Show me office chairs under 8000", "expected": {"label": "ecommerce.product_search", "entities": {"product": "chair"}, "filters": {"budget": {"max": 8000}}}}
+{"id": "test-015", "category": "direct", "text": "Which is better, Pixel 8 or iPhone 15?", "expected": {"label": "ecommerce.compare_products", "entities": {"items": ["Pixel 8", "iPhone 15"]}}}
+{"id": "test-016", "category": "direct", "text": "Track my order 99812", "expected": {"label": "ecommerce.order_status", "entities": {"order_id": {"value": "99812"}}}}
+{"id": "test-017", "category": "direct", "text": "I want to return my headphones", "expected": {"label": "ecommerce.cancel_or_return", "entities": {"request_type": "return", "product": "headphones"}}}
+{"id": "test-018", "category": "direct", "text": "Create a 2-week workout plan for building strength", "expected": {"label": "planning.create_plan", "entities": {"duration": {"amount": 2, "unit": "week"}}}}
+{"id": "test-019", "category": "direct", "text": "Set a reminder to water the plants at 7 am", "expected": {"label": "planning.schedule_event", "entities": {"title": "water the plants", "time": {"time": "07:00"}}}}
+{"id": "test-020", "category": "direct", "text": "Book two tickets on the bus from Jaipur to Delhi", "expected": {"label": "travel.book", "entities": {"mode": "bus", "origin": "Jaipur", "destination": "Delhi", "travellers": {"count": 2}}}}
+{"id": "test-021", "category": "direct", "text": "What trains run from Chennai to Bangalore on Sunday?", "expected": {"label": "travel.search_options", "entities": {"mode": "train", "origin": "Chennai", "destination": "Bangalore", "date": {"date": "2026-10-25"}}}}
+{"id": "test-022", "category": "direct", "text": "Label these customer messages as complaint or praise", "expected": {"label": "text.classify"}}
+{"id": "test-023", "category": "direct", "text": "hey, thanks for the help!", "expected": {"label": "conversation.chitchat"}}
+{"id": "test-024", "category": "direct", "text": "Suggest some documentaries about space", "expected": {"label": "general.recommend"}}
+{"id": "test-025", "category": "direct", "text": "Show me my payslip for August", "expected": {"label": "records.retrieve"}}
+{"id": "test-026", "category": "direct", "text": "My bluetooth speaker isn't connecting to my phone", "expected": {"label": "support.troubleshoot"}}
+{"id": "test-027", "category": "direct", "text": "How much does a DevOps engineer earn in Pune?", "expected": {"label": "jobs.salary_insights", "entities": {"role": "devops engineer", "location": "Pune"}}}
+{"id": "test-028", "category": "direct", "text": "Where does this policy talk about data retention?", "expected": {"label": "document.search"}}
+{"id": "test-029", "category": "paraphrase", "text": "Any vacancies for Python devs near Noida?", "expected": {"label": "jobs.search", "entities": {"skills": ["Python"], "location": "Noida"}}}
+{"id": "test-030", "category": "paraphrase", "text": "Looking for work as a graphic designer in Mumbai", "expected": {"label": "jobs.search", "entities": {"role": "graphic designer", "location": "Mumbai"}}}
+{"id": "test-031", "category": "paraphrase", "text": "I could use a decent pair of headphones that don't cost a fortune", "expected": {"label": "ecommerce.product_search", "entities": {"product": "headphones"}}}
+{"id": "test-032", "category": "paraphrase", "text": "Boil down this transcript to the essentials", "expected": {"label": "document.summarize"}}
+{"id": "test-033", "category": "paraphrase", "text": "What's 'thank you very much' in Italian?", "expected": {"label": "text.translate", "entities": {"target_language": "Italian", "text": "thank you very much"}}}
+{"id": "test-034", "category": "paraphrase", "text": "Has my parcel been dispatched yet?", "expected": {"label": "ecommerce.order_status"}}
+{"id": "test-035", "category": "paraphrase", "text": "I'd like a refund for the blender I bought", "expected": {"label": "ecommerce.cancel_or_return", "entities": {"request_type": "refund"}}}
+{"id": "test-036", "category": "paraphrase", "text": "Help me organize a schedule to finish my thesis by May", "expected": {"label": "planning.create_plan"}}
+{"id": "test-037", "category": "paraphrase", "text": "Ping me tomorrow to renew my passport", "expected": {"label": "planning.schedule_event", "entities": {"date": {"date": "2026-10-23"}}}}
+{"id": "test-038", "category": "paraphrase", "text": "My Java build keeps failing with a compilation error", "expected": {"label": "programming.debug", "entities": {"language": ["Java"]}}}
+{"id": "test-039", "category": "paraphrase", "text": "Can you code up a function that checks if a number is prime?", "expected": {"label": "programming.write_code"}}
+{"id": "test-040", "category": "paraphrase", "text": "Give me the highlights of this research paper", "expected": {"label": "document.summarize"}}
+{"id": "test-041", "category": "paraphrase", "text": "Which hotels are available in Shimla this weekend?", "expected": {"label": "travel.search_options", "entities": {"mode": "hotel", "destination": "Shimla"}}}
+{"id": "test-042", "category": "paraphrase", "text": "Are any companies hiring React developers in Pune?", "expected": {"label": "jobs.search", "entities": {"skills": ["React"], "location": "Pune"}}}
+{"id": "test-043", "category": "paraphrase", "text": "Who painted the Mona Lisa?", "expected": {"label": "general.question"}}
+{"id": "test-044", "category": "paraphrase", "text": "How many kilometers is 26 miles?", "expected": {"label": "math.calculate"}}
+{"id": "test-045", "category": "paraphrase", "text": "Make this message sound more polite", "expected": {"label": "document.rewrite", "entities": {"tone": "polite"}}}
+{"id": "test-046", "category": "paraphrase", "text": "Put together a short speech for my friend's wedding", "expected": {"label": "document.create", "entities": {"document_type": "speech"}}}
+{"id": "test-047", "category": "paraphrase", "text": "Line up some podcasts I could listen to on my commute", "expected": {"label": "general.recommend"}}
+{"id": "test-048", "category": "typo", "text": "pythn devloper jobs in hydrabad", "expected": {"label": "jobs.search", "entities": {"skills": ["Python"], "location": "Hyderabad"}}}
+{"id": "test-049", "category": "typo", "text": "sumarize this documnt", "expected": {"label": "document.summarize"}}
+{"id": "test-050", "category": "typo", "text": "tranlate this into japanese", "expected": {"label": "text.translate", "entities": {"target_language": "Japanese"}}}
+{"id": "test-051", "category": "typo", "text": "my laptp is overheting", "expected": {"label": "support.troubleshoot"}}
+{"id": "test-052", "category": "typo", "text": "wireles mouse under 1000", "expected": {"label": "ecommerce.product_search", "entities": {"product": "mouse"}, "filters": {"budget": {"max": 1000}}}}
+{"id": "test-053", "category": "typo", "text": "shedule a meting with the sales team tomorow at 2pm", "expected": {"label": "planning.schedule_event", "entities": {"date": {"date": "2026-10-23"}, "time": {"time": "14:00"}}}}
+{"id": "test-054", "category": "typo", "text": "compre samsung s24 and pixel 8", "expected": {"label": "ecommerce.compare_products"}}
+{"id": "test-055", "category": "typo", "text": "who invnted the light bulb", "expected": {"label": "general.question"}}
+{"id": "test-056", "category": "typo", "text": "TypeError in my javscript code", "expected": {"label": "programming.debug", "entities": {"error": "TypeError"}}}
+{"id": "test-057", "category": "typo", "text": "were is my order", "expected": {"label": "ecommerce.order_status"}}
+{"id": "test-058", "category": "indirect", "text": "I need the invoice numbers and amounts from these PDFs in a table", "expected": {"label": "document.extract", "entities": {"fields": ["invoice number", "amounts"]}}}
+{"id": "test-059", "category": "indirect", "text": "Thinking of switching to a data science job in Bangalore", "expected": {"label": "jobs.search", "entities": {"location": "Bangalore"}}}
+{"id": "test-060", "category": "indirect", "text": "This cover letter feels way too long", "expected": {"label": "document.rewrite"}}
+{"id": "test-061", "category": "indirect", "text": "I only have two minutes, what does this email say?", "expected": {"label": "document.summarize"}}
+{"id": "test-062", "category": "indirect", "text": "The jacket I received is the wrong colour", "expected": {"label": "ecommerce.cancel_or_return"}}
+{"id": "test-063", "category": "indirect", "text": "No clue what this SQL query is doing", "expected": {"label": "programming.explain_code"}}
+{"id": "test-064", "category": "indirect", "text": "It's been ten days and my order still hasn't shown up", "expected": {"label": "ecommerce.order_status"}}
+{"id": "test-065", "category": "indirect", "text": "Every time I open the app it just closes itself", "expected": {"label": "support.troubleshoot"}}
+{"id": "test-066", "category": "indirect", "text": "My code says 'undefined is not a function' and I'm lost", "expected": {"label": "programming.debug"}}
+{"id": "test-067", "category": "indirect", "text": "Something nice to gift my dad under 3000", "expected": {"label": "ecommerce.product_search", "filters": {"budget": {"max": 3000}}}}
+{"id": "test-068", "category": "multi_constraint", "text": "Remote part-time Java developer jobs in Bangalore for 2-4 years experience", "expected": {"label": "jobs.search", "entities": {"skills": ["Java"], "role": "developer", "location": "Bangalore"}, "filters": {"work_mode": "remote", "employment_type": "part-time", "experience": {"min_years": 2, "max_years": 4}}}}
+{"id": "test-069", "category": "multi_constraint", "text": "Sony headphones between 5000 and 10000 rupees with noise cancelling, 4 stars and above", "expected": {"label": "ecommerce.product_search", "entities": {"brand": ["Sony"], "product": "headphones"}, "filters": {"budget": {"min": 5000, "max": 10000, "currency": "INR"}, "rating": {"min": 4}}}}
+{"id": "test-070", "category": "multi_constraint", "text": "Reserve a hotel room in Kochi for 3 people on 5 January", "expected": {"label": "travel.book", "entities": {"mode": "hotel", "destination": "Kochi", "travellers": {"count": 3}, "date": {"date": "2027-01-05"}}}}
+{"id": "test-071", "category": "multi_constraint", "text": "Set up a meeting with Arjun on Monday at 10:30 am", "expected": {"label": "planning.schedule_event", "entities": {"date": {"date": "2026-10-26"}, "time": {"time": "10:30"}, "participants": ["Arjun"]}}}
+{"id": "test-072", "category": "multi_constraint", "text": "Plan a budget-friendly 3-day trip to Rishikesh for 2 people next month", "expected": {"label": "planning.create_plan", "entities": {"destination": "Rishikesh", "duration": {"amount": 3, "unit": "day"}, "people": {"count": 2}, "date": {"start": "2026-11-01", "end": "2026-11-30"}}, "filters": {"price_preference": "low"}}}
+{"id": "test-073", "category": "multi_constraint", "text": "Senior data scientist roles in Gurgaon paying over 30 LPA, hybrid", "expected": {"label": "jobs.search", "entities": {"role": "data scientist", "location": "Gurgaon"}, "filters": {"work_mode": "hybrid", "experience": {"level": "senior"}, "salary": {"min": 3000000, "currency": "INR"}}}}
+{"id": "test-074", "category": "multi_constraint", "text": "Translate 'the meeting is cancelled' from English to French", "expected": {"label": "text.translate", "entities": {"source_language": "English", "target_language": "French", "text": "the meeting is cancelled"}}}
+{"id": "test-075", "category": "multi_constraint", "text": "Newest 4K monitors from LG under 30k", "expected": {"label": "ecommerce.product_search", "entities": {"brand": ["LG"], "product": "monitor"}, "filters": {"budget": {"max": 30000}, "sort": "newest"}}}
+{"id": "test-076", "category": "multi_constraint", "text": "Flights from Chennai to Singapore on 12/11/2026 for 2 adults", "expected": {"label": "travel.search_options", "entities": {"mode": "flight", "origin": "Chennai", "destination": "Singapore", "date": {"date": "2026-11-12"}, "travellers": {"count": 2}}}}
+{"id": "test-077", "category": "overlap", "text": "List every name mentioned in these meeting notes", "expected": {"label": "document.extract", "entities": {"fields": ["names"]}}}
+{"id": "test-078", "category": "overlap", "text": "Is there anything in the contract about a non-compete?", "expected": {"label": "document.search"}}
+{"id": "test-079", "category": "overlap", "text": "Write a job description for a backend engineer", "expected": {"label": "document.create", "entities": {"document_type": "job description"}}}
+{"id": "test-080", "category": "overlap", "text": "Convert this JavaScript snippet to TypeScript", "expected": {"label": "programming.refactor", "entities": {"language": ["JavaScript", "TypeScript"]}}}
+{"id": "test-081", "category": "overlap", "text": "Translate this Python code to Java", "expected": {"label": "programming.refactor"}}
+{"id": "test-082", "category": "overlap", "text": "What is recursion in programming?", "expected": {"label": "programming.explain_code"}}
+{"id": "test-083", "category": "overlap", "text": "Why do cats purr?", "expected": {"label": "general.question"}}
+{"id": "test-084", "category": "overlap", "text": "My new phone's battery drains overnight", "expected": {"label": "support.troubleshoot"}}
+{"id": "test-085", "category": "overlap", "text": "Phones with the best battery life under 20k", "expected": {"label": "ecommerce.product_search", "filters": {"budget": {"max": 20000}}}}
+{"id": "test-086", "category": "overlap", "text": "Show my meetings for tomorrow", "expected": {"label": "records.retrieve"}}
+{"id": "test-087", "category": "ambiguous", "text": "can you help me with excel", "expected": {"label": "ambiguous"}}
+{"id": "test-088", "category": "ambiguous", "text": "laptop", "expected": {"label": "ambiguous"}}
+{"id": "test-089", "category": "ambiguous", "text": "Mumbai", "expected": {"label": "ambiguous"}}
+{"id": "test-090", "category": "ambiguous", "text": "I need help", "expected": {"label": "ambiguous"}}
+{"id": "test-091", "category": "ambiguous", "text": "things for next week", "expected": {"label": "ambiguous"}}
+{"id": "test-092", "category": "ambiguous", "text": "React", "expected": {"label": "ambiguous"}}
+{"id": "test-093", "category": "ambiguous", "text": "do it", "expected": {"label": "ambiguous"}}
+{"id": "test-094", "category": "unknown", "text": "Dim the bedroom lights to 30 percent", "expected": {"label": "unknown"}}
+{"id": "test-095", "category": "unknown", "text": "Play the latest Arijit Singh song", "expected": {"label": "unknown"}}
+{"id": "test-096", "category": "unknown", "text": "Order biryani from the nearest restaurant", "expected": {"label": "unknown"}}
+{"id": "test-097", "category": "unknown", "text": "Pay my credit card bill", "expected": {"label": "unknown"}}
+{"id": "test-098", "category": "unknown", "text": "Send a WhatsApp message to Neha saying I'm late", "expected": {"label": "unknown"}}
+{"id": "test-099", "category": "unknown", "text": "Unlock the car", "expected": {"label": "unknown"}}
+{"id": "test-100", "category": "unknown", "text": "Water the garden at 6", "expected": {"label": "unknown"}}
+{"id": "test-101", "category": "unknown", "text": "qwerty uiop asdf", "expected": {"label": "unknown"}}
+{"id": "test-102", "category": "unknown", "text": "Buy 10 shares of Infosys", "expected": {"label": "unknown"}}
+{"id": "test-103", "category": "unknown", "text": "Turn on airplane mode", "expected": {"label": "unknown"}}
+{"id": "test-104", "category": "unknown", "text": "Take a screenshot", "expected": {"label": "unknown"}}
+{"id": "test-105", "category": "multi", "text": "Find remote React jobs and then draft a cover letter for them", "expected": {"label": "multi", "tasks": ["jobs.search", "document.create"], "depends_on": [[], [0]]}}
+{"id": "test-106", "category": "multi", "text": "Translate this to Spanish and summarize it", "expected": {"label": "multi", "tasks": ["text.translate", "document.summarize"], "depends_on": [[], [0]]}}
+{"id": "test-107", "category": "multi", "text": "Check where my order is. Also cancel my other order 4421", "expected": {"label": "multi", "tasks": ["ecommerce.order_status", "ecommerce.cancel_or_return"]}}
+{"id": "test-108", "category": "multi", "text": "Plan a weekend in Jaipur and book a hotel there", "expected": {"label": "multi", "tasks": ["planning.create_plan", "travel.book"], "depends_on": [[], [0]]}}
+{"id": "test-109", "category": "multi", "text": "Write a Python function to sort a list and explain how it works", "expected": {"label": "multi", "tasks": ["programming.write_code", "programming.explain_code"], "depends_on": [[], [0]]}}
+{"id": "test-110", "category": "multi_negative", "text": "Compare the iPhone 15 and Galaxy S24 for photography", "expected": {"label": "ecommerce.compare_products", "entities": {"items": ["iPhone 15", "Galaxy S24"]}}}
+{"id": "test-111", "category": "multi_negative", "text": "Salt and pepper grinder under 1500", "expected": {"label": "ecommerce.product_search"}}
+{"id": "test-112", "category": "malformed", "text": "", "expected": {"label": "invalid"}}
+{"id": "test-113", "category": "malformed", "text": "\n\t", "expected": {"label": "invalid"}}
+{"id": "test-114", "category": "malformed", "text": ".....", "expected": {"label": "invalid"}}
+{"id": "test-115", "category": "malformed", "text": "#$%^&", "expected": {"label": "invalid"}}
+{"id": "test-116", "category": "followup_ctx", "text": "Only full-time ones", "context": {"previous_message": "Java developer jobs in Pune", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["Java"], "role": "developer", "location": "Pune"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "jobs.search", "context_used": true, "entities": {"skills": ["Java"], "location": "Pune"}, "filters": {"employment_type": "full-time"}}}
+{"id": "test-117", "category": "followup_ctx", "text": "and in Mumbai?", "context": {"previous_message": "Java developer jobs in Pune", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["Java"], "role": "developer", "location": "Pune"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "jobs.search", "context_used": true, "entities": {"skills": ["Java"], "location": "Mumbai"}}}
+{"id": "test-118", "category": "followup_ctx", "text": "only Samsung", "context": {"previous_message": "Show me phones with a good camera", "intent": "ecommerce.product_search", "action": "search", "target": "products", "domain": "ecommerce", "entities": {"product": "phone"}, "filters": {}, "confidence": 0.8}, "expected": {"label": "ecommerce.product_search", "context_used": true, "entities": {"product": "phone", "brand": ["Samsung"]}}}
+{"id": "test-119", "category": "followup_ctx", "text": "cheapest ones on Friday", "context": {"previous_message": "flights from Delhi to Goa", "intent": "travel.search_options", "action": "search", "target": "travel_options", "domain": "travel", "entities": {"mode": "flight", "origin": "Delhi", "destination": "Goa"}, "filters": {}, "confidence": 0.85}, "expected": {"label": "travel.search_options", "context_used": true, "entities": {"origin": "Delhi", "destination": "Goa", "date": {"date": "2026-10-23"}}, "filters": {"sort": "price_asc"}}}
+{"id": "test-120", "category": "followup_ctx", "text": "What is the capital of France?", "context": {"previous_message": "Java developer jobs in Pune", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["Java"], "location": "Pune"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "general.question", "context_used": false}}
+{"id": "test-121", "category": "followup_noctx", "text": "only the cheaper ones", "expected": {"label": "clarify"}}
+{"id": "test-122", "category": "followup_noctx", "text": "What about Pune?", "expected": {"label": "clarify"}}
+{"id": "test-123", "category": "followup_noctx", "text": "and in Hindi?", "expected": {"label": "clarify"}}

@@ -1,0 +1,71 @@
+{"id": "final-001", "category": "direct", "text": "Search online for the history of the Taj Mahal", "expected": {"label": "web.search"}}
+{"id": "final-002", "category": "direct", "text": "Why is the moon sometimes visible during the day?", "expected": {"label": "general.question"}}
+{"id": "final-003", "category": "direct", "text": "Translate 'I am running late' into Marathi", "expected": {"label": "text.translate", "entities": {"target_language": "Marathi", "text": "I am running late"}}}
+{"id": "final-004", "category": "direct", "text": "What is 7% of 1500?", "expected": {"label": "math.calculate"}}
+{"id": "final-005", "category": "direct", "text": "Summarize these lecture notes", "expected": {"label": "document.summarize"}}
+{"id": "final-006", "category": "direct", "text": "Pull all the URLs out of this page", "expected": {"label": "document.extract", "entities": {"fields": ["links"]}}}
+{"id": "final-007", "category": "direct", "text": "Write an apology email to a customer", "expected": {"label": "document.create", "entities": {"document_type": "email"}}}
+{"id": "final-008", "category": "direct", "text": "Make this paragraph more concise", "expected": {"label": "document.rewrite"}}
+{"id": "final-009", "category": "direct", "text": "Write a C++ program that prints a pyramid", "expected": {"label": "programming.write_code", "entities": {"language": ["C++"]}}}
+{"id": "final-010", "category": "direct", "text": "Docker build fails with permission denied, help", "expected": {"label": "programming.debug", "entities": {"language": ["Docker"]}}}
+{"id": "final-011", "category": "direct", "text": "What does this JavaScript promise chain do?", "expected": {"label": "programming.explain_code"}}
+{"id": "final-012", "category": "direct", "text": "Clean up this messy Python function", "expected": {"label": "programming.refactor"}}
+{"id": "final-013", "category": "direct", "text": "Data engineer jobs in Hyderabad", "expected": {"label": "jobs.search", "entities": {"role": "data engineer", "location": "Hyderabad"}}}
+{"id": "final-014", "category": "direct", "text": "Show me Bluetooth speakers under 3000", "expected": {"label": "ecommerce.product_search", "entities": {"product": "speaker"}, "filters": {"budget": {"max": 3000}}}}
+{"id": "final-015", "category": "direct", "text": "Compare the OnePlus 12 and Pixel 8 cameras", "expected": {"label": "ecommerce.compare_products"}}
+{"id": "final-016", "category": "direct", "text": "Where's my order 77421?", "expected": {"label": "ecommerce.order_status", "entities": {"order_id": {"value": "77421"}}}}
+{"id": "final-017", "category": "direct", "text": "I need to return this jacket", "expected": {"label": "ecommerce.cancel_or_return", "entities": {"request_type": "return"}}}
+{"id": "final-018", "category": "direct", "text": "Create a weekly meal plan for a vegetarian", "expected": {"label": "planning.create_plan"}}
+{"id": "final-019", "category": "direct", "text": "Remind me to take my medicine at 9 pm", "expected": {"label": "planning.schedule_event", "entities": {"time": {"time": "21:00"}}}}
+{"id": "final-020", "category": "direct", "text": "Book a flight to Kolkata for tomorrow", "expected": {"label": "travel.book", "entities": {"mode": "flight", "destination": "Kolkata", "date": {"date": "2026-10-23"}}}}
+{"id": "final-021", "category": "direct", "text": "Any trains from Delhi to Jaipur tonight?", "expected": {"label": "travel.search_options", "entities": {"mode": "train", "origin": "Delhi", "destination": "Jaipur"}}}
+{"id": "final-022", "category": "direct", "text": "Is this comment spam?", "expected": {"label": "text.classify"}}
+{"id": "final-023", "category": "direct", "text": "thanks, you're a lifesaver", "expected": {"label": "conversation.chitchat"}}
+{"id": "final-024", "category": "direct", "text": "Suggest a good podcast about startups", "expected": {"label": "general.recommend"}}
+{"id": "final-025", "category": "direct", "text": "Show me last month's bank statement", "expected": {"label": "records.retrieve"}}
+{"id": "final-026", "category": "direct", "text": "My keyboard keys are not responding", "expected": {"label": "support.troubleshoot"}}
+{"id": "final-027", "category": "direct", "text": "What do data analysts earn in Mumbai?", "expected": {"label": "jobs.salary_insights", "entities": {"location": "Mumbai"}}}
+{"id": "final-028", "category": "direct", "text": "Find the part of the contract that covers refunds", "expected": {"label": "document.search"}}
+{"id": "final-029", "category": "typo", "text": "serch for python jobs in noida", "expected": {"label": "jobs.search", "entities": {"skills": ["Python"], "location": "Noida"}}}
+{"id": "final-030", "category": "typo", "text": "summrize this report pls", "expected": {"label": "document.summarize"}}
+{"id": "final-031", "category": "typo", "text": "my headphnes wont connect", "expected": {"label": "support.troubleshoot"}}
+{"id": "final-032", "category": "typo", "text": "wat is the boiling point of milk", "expected": {"label": "general.question"}}
+{"id": "final-033", "category": "typo", "text": "trnslate this to tamil", "expected": {"label": "text.translate", "entities": {"target_language": "Tamil"}}}
+{"id": "final-034", "category": "indirect", "text": "I can't make sense of this regex at all", "expected": {"label": "programming.explain_code"}}
+{"id": "final-035", "category": "indirect", "text": "The watch I ordered never showed up", "expected": {"label": "ecommerce.order_status"}}
+{"id": "final-036", "category": "indirect", "text": "My essay is full of grammar mistakes", "expected": {"label": "document.rewrite"}}
+{"id": "final-037", "category": "indirect", "text": "I need all the email IDs from these resumes", "expected": {"label": "document.extract", "entities": {"fields": ["email addresses"]}}}
+{"id": "final-038", "category": "indirect", "text": "Moving to Pune next month, looking for a QA role", "expected": {"label": "jobs.search", "entities": {"location": "Pune"}}}
+{"id": "final-039", "category": "indirect", "text": "The shirt I got is too big, I want a smaller size", "expected": {"label": "ecommerce.cancel_or_return"}}
+{"id": "final-040", "category": "indirect", "text": "My website shows a 404 error after deploying", "expected": {"label": "programming.debug"}}
+{"id": "final-041", "category": "multi_constraint", "text": "Remote full-time Ruby developer jobs with 2+ years experience", "expected": {"label": "jobs.search", "entities": {"skills": ["Ruby"], "role": "developer"}, "filters": {"work_mode": "remote", "employment_type": "full-time", "experience": {"min_years": 2}}}}
+{"id": "final-042", "category": "multi_constraint", "text": "HP laptops between 40k and 60k, newest first", "expected": {"label": "ecommerce.product_search", "entities": {"brand": ["HP"], "product": "laptop"}, "filters": {"budget": {"min": 40000, "max": 60000}, "sort": "newest"}}}
+{"id": "final-043", "category": "multi_constraint", "text": "Book a bus from Bangalore to Mysore for 2 people on Sunday", "expected": {"label": "travel.book", "entities": {"mode": "bus", "origin": "Bangalore", "destination": "Mysore", "travellers": {"count": 2}, "date": {"date": "2026-10-25"}}}}
+{"id": "final-044", "category": "multi_constraint", "text": "Schedule a call with Kiran tomorrow at 5 pm", "expected": {"label": "planning.schedule_event", "entities": {"date": {"date": "2026-10-23"}, "time": {"time": "17:00"}, "participants": ["Kiran"]}}}
+{"id": "final-045", "category": "multi_constraint", "text": "Plan a 4-day trip to Ladakh in June under 50k", "expected": {"label": "planning.create_plan", "entities": {"destination": "Ladakh", "duration": {"amount": 4, "unit": "day"}, "budget": {"max": 50000}, "date": {"start": "2027-06-01", "end": "2027-06-30"}}}}
+{"id": "final-046", "category": "multi_constraint", "text": "Translate this email from French to English", "expected": {"label": "text.translate", "entities": {"source_language": "French", "target_language": "English"}}}
+{"id": "final-047", "category": "ambiguous", "text": "Rust", "expected": {"label": "ambiguous"}}
+{"id": "final-048", "category": "ambiguous", "text": "printer", "expected": {"label": "ambiguous"}}
+{"id": "final-049", "category": "ambiguous", "text": "Could you help me with something?", "expected": {"label": "ambiguous"}}
+{"id": "final-050", "category": "ambiguous", "text": "Chennai", "expected": {"label": "ambiguous"}}
+{"id": "final-051", "category": "unknown", "text": "Turn off the TV", "expected": {"label": "unknown"}}
+{"id": "final-052", "category": "unknown", "text": "Play the next episode", "expected": {"label": "unknown"}}
+{"id": "final-053", "category": "unknown", "text": "Get me a pizza delivered", "expected": {"label": "unknown"}}
+{"id": "final-054", "category": "unknown", "text": "Pay my water bill", "expected": {"label": "unknown"}}
+{"id": "final-055", "category": "unknown", "text": "Message Priya that dinner is ready", "expected": {"label": "unknown"}}
+{"id": "final-056", "category": "unknown", "text": "Switch to dark mode", "expected": {"label": "unknown"}}
+{"id": "final-057", "category": "unknown", "text": "plkj qwrt zmxn", "expected": {"label": "unknown"}}
+{"id": "final-058", "category": "unknown", "text": "Invest 10000 in mutual funds", "expected": {"label": "unknown"}}
+{"id": "final-059", "category": "multi", "text": "Look up React jobs in Noida and compare their salaries", "expected": {"label": "multi", "tasks": ["jobs.search", "general.compare"], "depends_on": [[], [0]]}}
+{"id": "final-060", "category": "multi", "text": "Translate this email to French and then summarize it", "expected": {"label": "multi", "tasks": ["text.translate", "document.summarize"], "depends_on": [[], [0]]}}
+{"id": "final-061", "category": "multi", "text": "Where is my order 4410? Also, what's the capital of Canada?", "expected": {"label": "multi", "tasks": ["ecommerce.order_status", "general.question"]}}
+{"id": "final-062", "category": "multi", "text": "Write a SQL query to find duplicates and explain how it works", "expected": {"label": "multi", "tasks": ["programming.write_code", "programming.explain_code"], "depends_on": [[], [0]]}}
+{"id": "final-063", "category": "multi_negative", "text": "Compare Rust and Kotlin for systems programming", "expected": {"label": "general.compare"}}
+{"id": "final-064", "category": "multi_negative", "text": "Bread and butter knife set under 800", "expected": {"label": "ecommerce.product_search"}}
+{"id": "final-065", "category": "malformed", "text": "", "expected": {"label": "invalid"}}
+{"id": "final-066", "category": "malformed", "text": "?? !!", "expected": {"label": "invalid"}}
+{"id": "final-067", "category": "followup_ctx", "text": "only part-time ones", "context": {"previous_message": "Java jobs in Noida", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["Java"], "location": "Noida"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "jobs.search", "context_used": true, "entities": {"skills": ["Java"], "location": "Noida"}, "filters": {"employment_type": "part-time"}}}
+{"id": "final-068", "category": "followup_ctx", "text": "what about Gurgaon?", "context": {"previous_message": "Java jobs in Noida", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["Java"], "location": "Noida"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "jobs.search", "context_used": true, "entities": {"skills": ["Java"], "location": "Gurgaon"}}}
+{"id": "final-069", "category": "followup_ctx", "text": "under 15k", "context": {"previous_message": "phones with good battery", "intent": "ecommerce.product_search", "action": "search", "target": "products", "domain": "ecommerce", "entities": {"product": "phone"}, "filters": {}, "confidence": 0.8}, "expected": {"label": "ecommerce.product_search", "context_used": true, "entities": {"product": "phone"}, "filters": {"budget": {"max": 15000}}}}
+{"id": "final-070", "category": "followup_noctx", "text": "only the full-time ones", "expected": {"label": "clarify"}}
+{"id": "final-071", "category": "followup_noctx", "text": "what about Mumbai?", "expected": {"label": "clarify"}}

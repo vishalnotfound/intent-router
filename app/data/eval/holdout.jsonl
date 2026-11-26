@@ -1,0 +1,123 @@
+{"id": "hold-001", "category": "direct", "text": "Look up recent articles about renewable energy subsidies", "expected": {"label": "web.search"}}
+{"id": "hold-002", "category": "direct", "text": "What is the largest desert on Earth?", "expected": {"label": "general.question"}}
+{"id": "hold-003", "category": "direct", "text": "Translate 'where can I buy tickets' into Spanish", "expected": {"label": "text.translate", "entities": {"target_language": "Spanish", "text": "where can I buy tickets"}}}
+{"id": "hold-004", "category": "direct", "text": "What's 12 times 47?", "expected": {"label": "math.calculate"}}
+{"id": "hold-005", "category": "direct", "text": "Summarize the attached meeting transcript", "expected": {"label": "document.summarize"}}
+{"id": "hold-006", "category": "direct", "text": "Extract the names and phone numbers from this file", "expected": {"label": "document.extract", "entities": {"fields": ["names", "phone numbers"]}}}
+{"id": "hold-007", "category": "direct", "text": "Write a short email to my landlord about the broken heater", "expected": {"label": "document.create", "entities": {"document_type": "email"}}}
+{"id": "hold-008", "category": "direct", "text": "Rewrite this sentence so it sounds more confident", "expected": {"label": "document.rewrite"}}
+{"id": "hold-009", "category": "direct", "text": "Write a bash script that backs up my home folder", "expected": {"label": "programming.write_code", "entities": {"language": ["Bash"]}}}
+{"id": "hold-010", "category": "direct", "text": "My React component re-renders forever, what's wrong?", "expected": {"label": "programming.debug", "entities": {"language": ["React"]}}}
+{"id": "hold-011", "category": "direct", "text": "Explain what this Python list comprehension does", "expected": {"label": "programming.explain_code"}}
+{"id": "hold-012", "category": "direct", "text": "Optimize this SQL query, it's too slow", "expected": {"label": "programming.refactor"}}
+{"id": "hold-013", "category": "direct", "text": "Backend developer jobs in Pune", "expected": {"label": "jobs.search", "entities": {"role": "backend developer", "location": "Pune"}}}
+{"id": "hold-014", "category": "direct", "text": "Show me gaming laptops under 1 lakh", "expected": {"label": "ecommerce.product_search", "entities": {"product": "laptop"}, "filters": {"budget": {"max": 100000}}}}
+{"id": "hold-015", "category": "direct", "text": "Galaxy S24 vs iPhone 15, which should I get?", "expected": {"label": "ecommerce.compare_products"}}
+{"id": "hold-016", "category": "direct", "text": "Has order 55120 been shipped?", "expected": {"label": "ecommerce.order_status", "entities": {"order_id": {"value": "55120"}}}}
+{"id": "hold-017", "category": "direct", "text": "Please cancel my order 88231", "expected": {"label": "ecommerce.cancel_or_return", "entities": {"request_type": "cancel"}}}
+{"id": "hold-018", "category": "direct", "text": "Make a 30-day plan to learn guitar", "expected": {"label": "planning.create_plan", "entities": {"duration": {"amount": 30, "unit": "day"}}}}
+{"id": "hold-019", "category": "direct", "text": "Remind me to pay the electricity bill on Monday", "expected": {"label": "planning.schedule_event", "entities": {"date": {"date": "2026-10-26"}}}}
+{"id": "hold-020", "category": "direct", "text": "Book a cab from my office to the airport at 6 pm", "expected": {"label": "travel.book", "entities": {"mode": "cab", "time": {"time": "18:00"}}}}
+{"id": "hold-021", "category": "direct", "text": "Show buses from Pune to Goa on Saturday", "expected": {"label": "travel.search_options", "entities": {"mode": "bus", "origin": "Pune", "destination": "Goa", "date": {"date": "2026-10-24"}}}}
+{"id": "hold-022", "category": "direct", "text": "Classify these tweets by sentiment", "expected": {"label": "text.classify"}}
+{"id": "hold-023", "category": "direct", "text": "good morning, how's it going?", "expected": {"label": "conversation.chitchat"}}
+{"id": "hold-024", "category": "direct", "text": "Recommend a few anime series for beginners", "expected": {"label": "general.recommend"}}
+{"id": "hold-025", "category": "direct", "text": "Pull up my insurance policy document", "expected": {"label": "records.retrieve"}}
+{"id": "hold-026", "category": "direct", "text": "My TV has no sound", "expected": {"label": "support.troubleshoot", "entities": {"device": "tv"}}}
+{"id": "hold-027", "category": "direct", "text": "What's the typical salary for a QA engineer in Noida?", "expected": {"label": "jobs.salary_insights", "entities": {"role": "qa engineer", "location": "Noida"}}}
+{"id": "hold-028", "category": "direct", "text": "Find where the agreement mentions the termination fee", "expected": {"label": "document.search"}}
+{"id": "hold-029", "category": "paraphrase", "text": "Is anyone hiring Python freshers in Chennai?", "expected": {"label": "jobs.search", "entities": {"skills": ["Python"], "location": "Chennai"}}}
+{"id": "hold-030", "category": "paraphrase", "text": "I'm after a content writer position in Delhi", "expected": {"label": "jobs.search", "entities": {"role": "content writer", "location": "Delhi"}}}
+{"id": "hold-031", "category": "paraphrase", "text": "Point me to some affordable running shoes", "expected": {"label": "ecommerce.product_search", "entities": {"product": "shoes"}}}
+{"id": "hold-032", "category": "paraphrase", "text": "Can you shorten this report into a few key points?", "expected": {"label": "document.summarize"}}
+{"id": "hold-033", "category": "paraphrase", "text": "How do you say 'happy birthday' in French?", "expected": {"label": "text.translate", "entities": {"target_language": "French"}}}
+{"id": "hold-034", "category": "paraphrase", "text": "When is my package arriving?", "expected": {"label": "ecommerce.order_status"}}
+{"id": "hold-035", "category": "paraphrase", "text": "I want my money back for this damaged kettle", "expected": {"label": "ecommerce.cancel_or_return", "entities": {"request_type": "refund"}}}
+{"id": "hold-036", "category": "paraphrase", "text": "Help me map out a revision timetable before my finals", "expected": {"label": "planning.create_plan"}}
+{"id": "hold-037", "category": "paraphrase", "text": "Set an alarm for 6:30 am", "expected": {"label": "planning.schedule_event", "entities": {"time": {"time": "06:30"}}}}
+{"id": "hold-038", "category": "paraphrase", "text": "My Python script dies with a MemoryError, any idea why?", "expected": {"label": "programming.debug", "entities": {"error": "MemoryError"}}}
+{"id": "hold-039", "category": "paraphrase", "text": "Generate a regex to validate email addresses", "expected": {"label": "programming.write_code"}}
+{"id": "hold-040", "category": "paraphrase", "text": "Give me the short version of this chapter", "expected": {"label": "document.summarize"}}
+{"id": "hold-041", "category": "paraphrase", "text": "What hotels are there in Udaipur under 4000 a night?", "expected": {"label": "travel.search_options", "entities": {"mode": "hotel", "destination": "Udaipur"}}}
+{"id": "hold-042", "category": "paraphrase", "text": "Any job openings for Android developers in Hyderabad?", "expected": {"label": "jobs.search", "entities": {"skills": ["Android"], "location": "Hyderabad"}}}
+{"id": "hold-043", "category": "paraphrase", "text": "Who discovered penicillin?", "expected": {"label": "general.question"}}
+{"id": "hold-044", "category": "paraphrase", "text": "Convert 100 Fahrenheit to Celsius", "expected": {"label": "math.calculate"}}
+{"id": "hold-045", "category": "paraphrase", "text": "Can you make this email sound friendlier?", "expected": {"label": "document.rewrite"}}
+{"id": "hold-046", "category": "paraphrase", "text": "Draft a LinkedIn post about my promotion", "expected": {"label": "document.create", "entities": {"document_type": "LinkedIn post"}}}
+{"id": "hold-047", "category": "paraphrase", "text": "Any good board games for a family night?", "expected": {"label": "general.recommend"}}
+{"id": "hold-048", "category": "typo", "text": "find jaav developer jobs in puen", "expected": {"label": "jobs.search"}}
+{"id": "hold-049", "category": "typo", "text": "summerize this emial", "expected": {"label": "document.summarize"}}
+{"id": "hold-050", "category": "typo", "text": "transalte this into french", "expected": {"label": "text.translate", "entities": {"target_language": "French"}}}
+{"id": "hold-051", "category": "typo", "text": "my phnoe screen is flickring", "expected": {"label": "support.troubleshoot"}}
+{"id": "hold-052", "category": "typo", "text": "cheep headphnes under 1500", "expected": {"label": "ecommerce.product_search", "filters": {"budget": {"max": 1500}}}}
+{"id": "hold-053", "category": "typo", "text": "remidn me to call dad tomorow evening", "expected": {"label": "planning.schedule_event", "entities": {"date": {"date": "2026-10-23"}}}}
+{"id": "hold-054", "category": "typo", "text": "compar dell xps and macbook air", "expected": {"label": "ecommerce.compare_products"}}
+{"id": "hold-055", "category": "typo", "text": "wat is the tallest building in the world", "expected": {"label": "general.question"}}
+{"id": "hold-056", "category": "typo", "text": "SyntaxError in my pyton code", "expected": {"label": "programming.debug", "entities": {"error": "SyntaxError"}}}
+{"id": "hold-057", "category": "typo", "text": "trak my ordr 4471", "expected": {"label": "ecommerce.order_status"}}
+{"id": "hold-058", "category": "indirect", "text": "My manager needs every deadline from this contract listed out", "expected": {"label": "document.extract"}}
+{"id": "hold-059", "category": "indirect", "text": "I'm relocating to Hyderabad and want a testing job there", "expected": {"label": "jobs.search", "entities": {"location": "Hyderabad"}}}
+{"id": "hold-060", "category": "indirect", "text": "This paragraph is way too wordy", "expected": {"label": "document.rewrite"}}
+{"id": "hold-061", "category": "indirect", "text": "I won't have time to read all 30 pages of this before the call", "expected": {"label": "document.summarize"}}
+{"id": "hold-062", "category": "indirect", "text": "These earphones stopped working after two days and I want a replacement", "expected": {"label": "ecommerce.cancel_or_return"}}
+{"id": "hold-063", "category": "indirect", "text": "Not sure what this bash command does: rm -rf ./build", "expected": {"label": "programming.explain_code"}}
+{"id": "hold-064", "category": "indirect", "text": "The courier said delivered but I never got my package", "expected": {"label": "ecommerce.order_status"}}
+{"id": "hold-065", "category": "indirect", "text": "Whenever I plug in my headphones, there's no audio", "expected": {"label": "support.troubleshoot"}}
+{"id": "hold-066", "category": "indirect", "text": "Uncaught TypeError keeps popping up in my console", "expected": {"label": "programming.debug"}}
+{"id": "hold-067", "category": "indirect", "text": "Looking for a birthday present for my wife under 5000", "expected": {"label": "ecommerce.product_search", "filters": {"budget": {"max": 5000}}}}
+{"id": "hold-068", "category": "multi_constraint", "text": "Full-time Java backend jobs in Bangalore, 5-8 years experience, hybrid", "expected": {"label": "jobs.search", "entities": {"skills": ["Java"], "location": "Bangalore"}, "filters": {"employment_type": "full-time", "experience": {"min_years": 5, "max_years": 8}, "work_mode": "hybrid"}}}
+{"id": "hold-069", "category": "multi_constraint", "text": "Dell laptops under 70000 with 16GB RAM, best rated first", "expected": {"label": "ecommerce.product_search", "entities": {"brand": ["Dell"], "product": "laptop"}, "filters": {"budget": {"max": 70000}, "sort": "rating_desc"}}}
+{"id": "hold-070", "category": "multi_constraint", "text": "Book a train from Mumbai to Pune for 3 people on 2 November", "expected": {"label": "travel.book", "entities": {"mode": "train", "origin": "Mumbai", "destination": "Pune", "travellers": {"count": 3}, "date": {"date": "2026-11-02"}}}}
+{"id": "hold-071", "category": "multi_constraint", "text": "Schedule a review with Meera on Wednesday at 3 pm", "expected": {"label": "planning.schedule_event", "entities": {"date": {"date": "2026-10-28"}, "time": {"time": "15:00"}, "participants": ["Meera"]}}}
+{"id": "hold-072", "category": "multi_constraint", "text": "Plan a 7-day Kerala trip for a family of 4 under 1 lakh in December", "expected": {"label": "planning.create_plan", "entities": {"destination": "Kerala", "duration": {"amount": 7, "unit": "day"}, "budget": {"max": 100000}, "date": {"start": "2026-12-01", "end": "2026-12-31"}}}}
+{"id": "hold-073", "category": "multi_constraint", "text": "Remote React Native developer jobs paying above 15 LPA", "expected": {"label": "jobs.search", "entities": {"skills": ["React Native"], "role": "developer"}, "filters": {"work_mode": "remote", "salary": {"min": 1500000}}}}
+{"id": "hold-074", "category": "multi_constraint", "text": "Translate this note from Hindi to English", "expected": {"label": "text.translate", "entities": {"source_language": "Hindi", "target_language": "English"}}}
+{"id": "hold-075", "category": "multi_constraint", "text": "Red sneakers size 8 under 3500 rupees", "expected": {"label": "ecommerce.product_search", "entities": {"product": "shoes"}, "filters": {"color": "red", "budget": {"max": 3500, "currency": "INR"}}}}
+{"id": "hold-076", "category": "multi_constraint", "text": "Cheapest flights from Delhi to Bangkok next month", "expected": {"label": "travel.search_options", "entities": {"mode": "flight", "origin": "Delhi", "destination": "Bangkok"}, "filters": {"sort": "price_asc"}}}
+{"id": "hold-077", "category": "overlap", "text": "Find every invoice number in these documents", "expected": {"label": "document.extract"}}
+{"id": "hold-078", "category": "overlap", "text": "Which section of the handbook explains the leave policy?", "expected": {"label": "document.search"}}
+{"id": "hold-079", "category": "overlap", "text": "Write a project proposal for a mobile banking app", "expected": {"label": "document.create"}}
+{"id": "hold-080", "category": "overlap", "text": "Rewrite this loop in Go", "expected": {"label": "programming.refactor"}}
+{"id": "hold-081", "category": "overlap", "text": "Translate this Java code into Kotlin", "expected": {"label": "programming.refactor"}}
+{"id": "hold-082", "category": "overlap", "text": "What is a REST API?", "expected": {"label": "programming.explain_code"}}
+{"id": "hold-083", "category": "overlap", "text": "What is the main cause of inflation?", "expected": {"label": "general.question"}}
+{"id": "hold-084", "category": "overlap", "text": "My router keeps restarting by itself", "expected": {"label": "support.troubleshoot"}}
+{"id": "hold-085", "category": "overlap", "text": "Find me a wifi router with good range", "expected": {"label": "ecommerce.product_search"}}
+{"id": "hold-086", "category": "overlap", "text": "Show my schedule for next Monday", "expected": {"label": "records.retrieve"}}
+{"id": "hold-087", "category": "overlap", "text": "Plan a day trip to Agra", "expected": {"label": "planning.create_plan"}}
+{"id": "hold-088", "category": "ambiguous", "text": "Kotlin", "expected": {"label": "ambiguous"}}
+{"id": "hold-089", "category": "ambiguous", "text": "headphones", "expected": {"label": "ambiguous"}}
+{"id": "hold-090", "category": "ambiguous", "text": "Can you help me out?", "expected": {"label": "ambiguous"}}
+{"id": "hold-091", "category": "ambiguous", "text": "Bangalore", "expected": {"label": "ambiguous"}}
+{"id": "hold-092", "category": "ambiguous", "text": "something about my account", "expected": {"label": "ambiguous"}}
+{"id": "hold-093", "category": "ambiguous", "text": "stuff", "expected": {"label": "ambiguous"}}
+{"id": "hold-094", "category": "unknown", "text": "Turn the fan on", "expected": {"label": "unknown"}}
+{"id": "hold-095", "category": "unknown", "text": "Skip to the next song", "expected": {"label": "unknown"}}
+{"id": "hold-096", "category": "unknown", "text": "Order a coffee from Starbucks", "expected": {"label": "unknown"}}
+{"id": "hold-097", "category": "unknown", "text": "Send 500 rupees to my sister on UPI", "expected": {"label": "unknown"}}
+{"id": "hold-098", "category": "unknown", "text": "Text Rohan that I'll be late", "expected": {"label": "unknown"}}
+{"id": "hold-099", "category": "unknown", "text": "Open the garage door", "expected": {"label": "unknown"}}
+{"id": "hold-100", "category": "unknown", "text": "Mute notifications for an hour", "expected": {"label": "unknown"}}
+{"id": "hold-101", "category": "unknown", "text": "zxcv bnm lkjh", "expected": {"label": "unknown"}}
+{"id": "hold-102", "category": "unknown", "text": "Sell my Tesla shares", "expected": {"label": "unknown"}}
+{"id": "hold-103", "category": "unknown", "text": "Restart my computer", "expected": {"label": "unknown"}}
+{"id": "hold-104", "category": "unknown", "text": "Record a voice memo", "expected": {"label": "unknown"}}
+{"id": "hold-105", "category": "multi", "text": "Find Java jobs in Pune and then write a cover letter for them", "expected": {"label": "multi", "tasks": ["jobs.search", "document.create"], "depends_on": [[], [0]]}}
+{"id": "hold-106", "category": "multi", "text": "Summarize this report and translate the summary into German", "expected": {"label": "multi", "tasks": ["document.summarize", "text.translate"]}}
+{"id": "hold-107", "category": "multi", "text": "Track my order 3321. Also, recommend a good mystery novel", "expected": {"label": "multi", "tasks": ["ecommerce.order_status", "general.recommend"]}}
+{"id": "hold-108", "category": "multi", "text": "Plan a 2-day trip to Shimla and book a hotel there", "expected": {"label": "multi", "tasks": ["planning.create_plan", "travel.book"], "depends_on": [[], [0]]}}
+{"id": "hold-109", "category": "multi", "text": "Explain what a hash map is and then write one in Python", "expected": {"label": "multi", "tasks": ["programming.explain_code", "programming.write_code"], "depends_on": [[], [0]]}}
+{"id": "hold-110", "category": "multi_negative", "text": "Compare the Kindle and Kobo e-readers for night reading", "expected": {"label": "ecommerce.compare_products"}}
+{"id": "hold-111", "category": "multi_negative", "text": "Black and white printer under 10000", "expected": {"label": "ecommerce.product_search"}}
+{"id": "hold-112", "category": "malformed", "text": "", "expected": {"label": "invalid"}}
+{"id": "hold-113", "category": "malformed", "text": "  \t ", "expected": {"label": "invalid"}}
+{"id": "hold-114", "category": "malformed", "text": "!!!", "expected": {"label": "invalid"}}
+{"id": "hold-115", "category": "malformed", "text": "...???", "expected": {"label": "invalid"}}
+{"id": "hold-116", "category": "followup_ctx", "text": "only hybrid ones", "context": {"previous_message": "React jobs in Bangalore", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["React"], "location": "Bangalore"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "jobs.search", "context_used": true, "entities": {"skills": ["React"], "location": "Bangalore"}, "filters": {"work_mode": "hybrid"}}}
+{"id": "hold-117", "category": "followup_ctx", "text": "how about Chennai?", "context": {"previous_message": "React jobs in Bangalore", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["React"], "location": "Bangalore"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "jobs.search", "context_used": true, "entities": {"skills": ["React"], "location": "Chennai"}}}
+{"id": "hold-118", "category": "followup_ctx", "text": "under 80k", "context": {"previous_message": "Show me laptops for video editing", "intent": "ecommerce.product_search", "action": "search", "target": "products", "domain": "ecommerce", "entities": {"product": "laptop", "use_case": "video editing"}, "filters": {}, "confidence": 0.8}, "expected": {"label": "ecommerce.product_search", "context_used": true, "entities": {"product": "laptop"}, "filters": {"budget": {"max": 80000}}}}
+{"id": "hold-119", "category": "followup_ctx", "text": "what about on Sunday?", "context": {"previous_message": "trains from Pune to Mumbai", "intent": "travel.search_options", "action": "search", "target": "travel_options", "domain": "travel", "entities": {"mode": "train", "origin": "Pune", "destination": "Mumbai"}, "filters": {}, "confidence": 0.85}, "expected": {"label": "travel.search_options", "context_used": true, "entities": {"origin": "Pune", "destination": "Mumbai", "date": {"date": "2026-10-25"}}}}
+{"id": "hold-120", "category": "followup_ctx", "text": "Summarize this article", "context": {"previous_message": "React jobs in Bangalore", "intent": "jobs.search", "action": "search", "target": "job_openings", "domain": "jobs", "entities": {"skills": ["React"], "location": "Bangalore"}, "filters": {}, "confidence": 0.9}, "expected": {"label": "document.summarize", "context_used": false}}
+{"id": "hold-121", "category": "followup_noctx", "text": "only the remote ones", "expected": {"label": "clarify"}}
+{"id": "hold-122", "category": "followup_noctx", "text": "how about Chennai?", "expected": {"label": "clarify"}}
+{"id": "hold-123", "category": "followup_noctx", "text": "same thing but cheaper", "expected": {"label": "clarify"}}

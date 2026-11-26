@@ -1,0 +1,10 @@
+# Runtime dependencies (CPU-only).
+# On Windows, install the CPU build of torch first (see README):
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+sentence-transformers>=3.0,<6
+numpy>=1.26
+pydantic>=2.6,<3
+pydantic-settings>=2.2,<3
+fastapi>=0.110
+uvicorn>=0.29

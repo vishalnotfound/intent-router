@@ -1,0 +1,5 @@
+-r requirements.txt
+# Tests (FastAPI's TestClient needs httpx) and benchmark memory measurement.
+pytest>=8.0
+httpx>=0.27
+psutil>=5.9

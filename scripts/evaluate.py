@@ -16,16 +16,17 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.core.config import DATA_DIR, get_settings  # noqa: E402
-from app.core.logging import setup_logging  # noqa: E402
-from app.evaluation import evaluate, format_report, load_cases  # noqa: E402
-from app.services.intent_service import IntentService  # noqa: E402
+from intent_router.core.config import DATA_DIR, get_settings  # noqa: E402
+from intent_router.core.logging import setup_logging  # noqa: E402
+from intent_router.evaluation import evaluate, format_report, load_cases  # noqa: E402
+from intent_router.services.intent_service import IntentService  # noqa: E402
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument("--split", choices=["dev", "test", "holdout", "final", "tuning", "all"], default="dev",
-                        help="tuning = dev+test+holdout (what thresholds are tuned on); final = clean held-out set")
+    parser.add_argument("--split", choices=["dev", "test", "holdout", "final", "regression", "tuning", "all"], default="dev",
+                        help="tuning = dev+test+holdout (what thresholds are tuned on); final = clean held-out set; "
+                             "regression = targeted negation/follow-up/multi-task checks (not in all or tuning)")
     parser.add_argument("--model", help="Embedding model (default: ROUTER_MODEL_NAME)")
     parser.add_argument("--errors", action="store_true", help="Print misrouted cases and extraction mismatches")
     parser.add_argument("--json", help="Write the full report to this JSON file")
@@ -49,6 +50,11 @@ def main() -> None:
         print("\nextraction mismatches:")
         for e in report["field_errors"]:
             print(f"  [{e['id']}] {e['field']}: gold={e['gold']} pred={e['pred']}")
+        print("\nstrict mismatches (label right, status or payload wrong):")
+        for e in report["strict_errors"]:
+            print(f"  [{e['id']}] {e['text']!r}: expected status={e['expected_status']} got={e['status']} "
+                  f"entities={e['entities']} filters={e['filters']}"
+                  + (f" tasks={e['tasks']}" if e.get("tasks") else ""))
     if args.json:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)
         Path(args.json).write_text(json.dumps(report, indent=2, default=str), encoding="utf-8")

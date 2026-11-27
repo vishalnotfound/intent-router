@@ -26,10 +26,10 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.core.config import DATA_DIR, Thresholds, get_settings  # noqa: E402
-from app.core.logging import setup_logging  # noqa: E402
-from app.evaluation import evaluate, load_cases  # noqa: E402
-from app.services.intent_service import IntentService  # noqa: E402
+from intent_router.core.config import DATA_DIR, Thresholds, get_settings  # noqa: E402
+from intent_router.core.logging import setup_logging  # noqa: E402
+from intent_router.evaluation import evaluate, load_cases  # noqa: E402
+from intent_router.services.intent_service import IntentService  # noqa: E402
 
 
 class CachedEncoder:

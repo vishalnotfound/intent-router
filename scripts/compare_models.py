@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from app.core.config import ALTERNATIVE_MODEL, DEFAULT_MODEL  # noqa: E402
+from intent_router.core.config import ALTERNATIVE_MODEL, DEFAULT_MODEL  # noqa: E402
 
 # dev, test, holdout: the tuning pool (test and holdout were written blind but their errors
 # were later inspected while improving the registry). final: written blind, never inspected

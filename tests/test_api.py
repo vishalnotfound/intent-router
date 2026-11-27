@@ -8,7 +8,7 @@ from fastapi.testclient import TestClient
 
 @pytest.fixture(scope="module")
 def client(service):
-    from app.main import app
+    from intent_router.main import app
 
     with TestClient(app) as c:  # runs the lifespan (model is cached in-process)
         yield c
@@ -80,6 +80,17 @@ def test_oversized_chunked_body_rejected_without_content_length(client):
 
     r = client.post("/route", content=chunks(), headers={"content-type": "application/json"})
     assert r.status_code == 413 and r.json()["error"]["code"] == "payload_too_large"
+
+
+def test_small_chunked_body_without_content_length_is_routed(client):
+    payload = b'{"message": "Find Python jobs in Noida"}'
+
+    def chunks():
+        for k in range(0, len(payload), 8):
+            yield payload[k:k + 8]
+
+    r = client.post("/route", content=chunks(), headers={"content-type": "application/json"})
+    assert r.status_code == 200 and r.json()["entities"] == {"skills": ["Python"], "location": "Noida"}
 
 
 def test_empty_message_is_a_valid_routing_result(client):

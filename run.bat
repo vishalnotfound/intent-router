@@ -19,7 +19,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
-"%PYTHON%" -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+"%PYTHON%" -m uvicorn intent_router.main:app --host 127.0.0.1 --port 8000
 if errorlevel 1 (
     echo The server stopped with an error.
     exit /b 1

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from app.core.schemas import Status
+from intent_router.core.schemas import Status
 
 
 def test_search_then_compare_with_dependency(route):

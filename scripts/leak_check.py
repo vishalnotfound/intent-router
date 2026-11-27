@@ -31,9 +31,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import psutil  # noqa: E402
 
-from app.core.config import DATA_DIR, get_settings  # noqa: E402
-from app.core.logging import setup_logging  # noqa: E402
-from app.evaluation import load_cases  # noqa: E402
+from intent_router.core.config import DATA_DIR, get_settings  # noqa: E402
+from intent_router.core.logging import setup_logging  # noqa: E402
+from intent_router.evaluation import load_cases  # noqa: E402
 
 REF = date(2026, 10, 22)
 PROC = psutil.Process()
@@ -71,7 +71,7 @@ def main() -> None:
     args = parser.parse_args()
 
     setup_logging("ERROR")
-    from app.services.intent_service import IntentService
+    from intent_router.services.intent_service import IntentService
 
     service = IntentService(get_settings())
     texts = [c["text"] for s in ("dev", "test", "holdout", "final")
@@ -106,7 +106,7 @@ def main() -> None:
     if "api" in args.phases:
         from fastapi.testclient import TestClient
 
-        from app.main import app
+        from intent_router.main import app
 
         # Reuse the same router instead of running the app's lifespan, which would build a
         # second one; this phase measures the HTTP layer only.

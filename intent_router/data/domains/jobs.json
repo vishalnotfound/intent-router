@@ -1,0 +1,154 @@
+{
+  "version": "1.0",
+  "description": "Jobs domain extension.",
+  "intents": [
+    {
+      "id": "jobs.search",
+      "label": "search for job openings",
+      "action": "search",
+      "target": "job_openings",
+      "domain": "jobs",
+      "description": "Find job openings, vacancies, internships or roles matching skills, role, location and other criteria.",
+      "examples": [
+        "Find Java jobs in Pune",
+        "are there any openings for data analysts in Mumbai?",
+        "remote data analyst jobs",
+        "I'm looking for a frontend developer role in Bangalore",
+        "any internships for freshers in Hyderabad?",
+        "list part-time teaching jobs near me",
+        "who is hiring React engineers in Chennai",
+        "job openings for nurses in Delhi",
+        "find me a work from home customer support job",
+        "senior DevOps positions paying above 30 LPA",
+        "show me vacancies for accountants in Kolkata",
+        "entry level software engineer jobs",
+        "I want to work as a chef in Goa",
+        "openings for marketing managers with a good salary",
+        "help me find a teaching job abroad"
+      ],
+      "negative_examples": [
+        "write a cover letter for a Python developer job",
+        "what is the average salary of a data scientist in Bangalore",
+        "compare salaries of Python jobs in Noida and Delhi",
+        "how do I prepare for a Java interview"
+      ],
+      "parameters": [
+        {"name": "skills", "types": ["technology"], "multiple": true, "recommended": true},
+        {"name": "role", "types": ["job_role"], "recommended": true},
+        {"name": "location", "types": ["location"], "recommended": true},
+        {"name": "work_mode", "types": ["work_mode"], "kind": "filter"},
+        {"name": "employment_type", "types": ["employment_type"], "kind": "filter"},
+        {"name": "experience", "types": ["experience"], "kind": "filter"},
+        {"name": "salary", "types": ["money_constraint", "money"], "kind": "filter"},
+        {"name": "date_posted", "types": ["date_range", "date"], "kind": "filter"}
+      ],
+      "side_effects": "read",
+      "operation": "search_jobs",
+      "unsupported_variants": [
+        {
+          "name": "candidate_search",
+          "label": "search for candidates, applicants or resumes",
+          "patterns": [
+            "^(?:(?!\\b(?:jobs?(?![\\s-]*seekers?)|openings?|vacanc(?:y|ies)|internships?|positions?|roles?|gigs?)\\b).)*?\\b(?:candidates|applicants|resumes|résumés|cvs|job[\\s-]*seekers|jobseekers|talent|profiles)\\b",
+            "\\b(?:find|search\\s+for|show\\s+me|get\\s+me|shortlist|source|screen|look(?:ing)?\\s+for)\\s+(?:me\\s+)?(?:a|an|the|some)\\s+(?:(?:good|suitable|qualified|strong|senior|junior)\\s+)?(?:candidate|applicant|resume|cv)\\b",
+            "\\b(?:i|we)(?:\\s*'?(?:m|re|am|are|want|need|would\\s+like|'d\\s+like|wish|plan))?(?:\\s+(?:looking|trying|planning|hoping))?\\s+to\\s+(?:hire|recruit)\\b",
+            "\\b(?:i|we)\\s*(?:'re|'m|are|am)\\s+(?:currently\\s+)?(?:hiring|recruiting)\\b",
+            "^(?:please\\s+)?(?:help\\s+(?:me|us)\\s+)?(?:hire|recruit)\\b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jobs.salary_insights",
+      "label": "get salary information",
+      "action": "retrieve",
+      "target": "salary_data",
+      "domain": "jobs",
+      "description": "Typical salary, pay range or compensation for a role, skill, experience level or location.",
+      "examples": [
+        "What's the average salary for a Python developer in Pune?",
+        "how much do data scientists earn in Bangalore",
+        "salary range for senior Java engineers",
+        "is 12 LPA a good package for 3 years experience?",
+        "typical pay for nurses in Delhi",
+        "what does a fresher software engineer make in Hyderabad",
+        "how much do Java developers make in Mumbai",
+        "what pay can a junior designer expect",
+        "salary of a project manager with 10 years experience"
+      ],
+      "negative_examples": [
+        "find Python jobs in Noida",
+        "compare them for me"
+      ],
+      "parameters": [
+        {"name": "skills", "types": ["technology"], "multiple": true},
+        {"name": "role", "types": ["job_role"]},
+        {"name": "location", "types": ["location"]},
+        {"name": "experience", "types": ["experience"], "kind": "filter"},
+        {"name": "salary", "types": ["money_constraint", "money"]}
+      ],
+      "side_effects": "read",
+      "operation": "salary_insights"
+    }
+  ],
+  "gazetteers": {
+    "job_role": {
+      "developer": ["developer", "dev"],
+      "engineer": ["engineer"],
+      "programmer": ["programmer", "coder"],
+      "software engineer": ["software engineer", "sde", "software developer"],
+      "frontend developer": ["frontend developer", "front-end developer", "front end developer", "frontend engineer"],
+      "backend developer": ["backend developer", "back-end developer", "back end developer", "backend engineer"],
+      "full stack developer": ["full stack developer", "full-stack developer", "fullstack developer", "full stack engineer"],
+      "web developer": ["web developer"],
+      "mobile developer": ["mobile developer", "app developer"],
+      "data scientist": ["data scientist"],
+      "data analyst": ["data analyst"],
+      "data engineer": ["data engineer"],
+      "machine learning engineer": ["machine learning engineer", "ml engineer", "ai engineer"],
+      "devops engineer": ["devops engineer", "devops", "site reliability engineer", "sre"],
+      "cloud engineer": ["cloud engineer", "cloud architect"],
+      "qa engineer": ["qa engineer", "tester", "test engineer", "qa", "quality analyst"],
+      "ui/ux designer": ["ui/ux designer", "ux designer", "ui designer", "product designer"],
+      "graphic designer": ["graphic designer"],
+      "designer": ["designer"],
+      "business analyst": ["business analyst"],
+      "analyst": ["analyst"],
+      "product manager": ["product manager"],
+      "project manager": ["project manager"],
+      "manager": ["manager"],
+      "architect": ["architect", "solutions architect"],
+      "system administrator": ["system administrator", "sysadmin", "system admin"],
+      "security engineer": ["security engineer", "cyber security analyst", "security analyst"],
+      "consultant": ["consultant"],
+      "accountant": ["accountant", "chartered accountant"],
+      "teacher": ["teacher", "tutor", "lecturer", "teaching"],
+      "nurse": ["nurse", "nursing"],
+      "content writer": ["content writer"],
+      "copywriter": ["copywriter"],
+      "technical writer": ["technical writer"],
+      "writer": ["writer"],
+      "digital marketing": ["digital marketing", "digital marketer"],
+      "marketing executive": ["marketing executive"],
+      "marketing": ["marketing", "marketer"],
+      "sales executive": ["sales executive"],
+      "sales": ["sales"],
+      "recruiter": ["recruiter"],
+      "hr executive": ["hr executive"],
+      "customer support": ["customer support", "customer service", "customer care"],
+      "data entry operator": ["data entry operator", "data entry"]
+    },
+    "work_mode": {
+      "remote": ["remote", "work from home", "wfh", "fully remote", "remotely"],
+      "hybrid": ["hybrid"],
+      "onsite": ["onsite", "on-site", "in office", "in-office", "work from office", "wfo"]
+    },
+    "employment_type": {
+      "full-time": ["full time", "full-time", "fulltime", "permanent"],
+      "part-time": ["part time", "part-time", "parttime"],
+      "contract": ["contract", "contractual"],
+      "freelance": ["freelance", "freelancing", "gig"],
+      "internship": ["internship", "intern"]
+    }
+  }
+}

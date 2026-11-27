@@ -8,7 +8,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.core.config import Settings  # noqa: E402
+from intent_router.core.config import Settings  # noqa: E402
 
 REFERENCE_DATE = date(2026, 10, 22)  # a Thursday; date expectations in tests assume this "today"
 
@@ -21,8 +21,8 @@ def settings() -> Settings:
 @pytest.fixture(scope="session")
 def service(settings):
     """The real router with the real embedding model, built once per test session."""
-    from app.models.loader import ModelNotAvailableError
-    from app.services.intent_service import IntentService
+    from intent_router.models.loader import ModelNotAvailableError
+    from intent_router.services.intent_service import IntentService
 
     try:
         return IntentService(settings)
@@ -42,8 +42,8 @@ def route(service):
 @pytest.fixture(scope="session")
 def pipeline(settings):
     """Extraction pipeline only (no model needed)."""
-    from app.extractors.pipeline import build_pipeline, load_gazetteers
-    from app.router.registry import IntentRegistry
+    from intent_router.extractors.pipeline import build_pipeline, load_gazetteers
+    from intent_router.router.registry import IntentRegistry
 
     registry = IntentRegistry.load(settings.intents_file, settings.domain_dirs)
     return build_pipeline(load_gazetteers(settings.gazetteer_file, registry.gazetteers)), registry

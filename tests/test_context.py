@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from app.core.schemas import ConversationContext, Status
+from intent_router.core.schemas import ConversationContext, Status
 
 
 def jobs_context(route) -> ConversationContext:

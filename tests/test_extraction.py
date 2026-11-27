@@ -6,10 +6,10 @@ from datetime import date
 
 import pytest
 
-from app.extractors.base import ExtractionContext
-from app.extractors.pipeline import map_parameters
-from app.extractors.rules import extract_dates, extract_money, extract_times
-from app.router.normalize import mask_entities, normalize_text, prepare
+from intent_router.extractors.base import ExtractionContext
+from intent_router.extractors.pipeline import map_parameters
+from intent_router.extractors.rules import extract_dates, extract_money, extract_times
+from intent_router.router.normalize import mask_entities, normalize_text, prepare
 
 CTX = ExtractionContext(reference_date=date(2026, 10, 22))  # Thursday
 

@@ -7,8 +7,8 @@ import json
 import pytest
 from pydantic import ValidationError
 
-from app.core.schemas import SCHEMA_VERSION, ConversationContext, RouteResult, Status
-from app.router.registry import IntentRegistry, RegistryError, RegistryFile
+from intent_router.core.schemas import SCHEMA_VERSION, ConversationContext, RouteResult, Status
+from intent_router.router.registry import IntentRegistry, RegistryError, RegistryFile
 
 
 def minimal_result(**overrides):

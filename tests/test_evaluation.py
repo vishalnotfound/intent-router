@@ -7,8 +7,8 @@ held-out test split with scripts/evaluate.py, not asserted here.
 
 from __future__ import annotations
 
-from app.core.config import DATA_DIR
-from app.evaluation import evaluate, load_cases, macro_f1, value_matches
+from intent_router.core.config import DATA_DIR
+from intent_router.evaluation import evaluate, load_cases, macro_f1, value_matches
 
 
 def test_metric_helpers():

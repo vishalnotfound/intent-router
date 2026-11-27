@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from app.core.schemas import RouteResult, Status
+from intent_router.core.schemas import RouteResult, Status
 
 
 @pytest.mark.parametrize("text", [

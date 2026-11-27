@@ -52,6 +52,8 @@ def main() -> None:
     parser.add_argument("--repeat", type=int, default=3, help="Passes over the request set")
     parser.add_argument("--concurrency", type=int, default=4, help="Threads for the concurrent test")
     parser.add_argument("--json", help="Write results to this JSON file")
+    parser.add_argument("--verifier", action="store_true",
+                        help="Enable the optional NLI verifier (ROUTER_VERIFIER=nli) for the measured service")
     args = parser.parse_args()
 
     if args.threads:
@@ -65,11 +67,11 @@ def main() -> None:
 
     from datetime import date
 
-    from app.core.config import DATA_DIR, Settings
-    from app.core.logging import setup_logging
-    from app.evaluation import load_cases
-    from app.models.loader import load_sentence_model
-    from app.services.intent_service import IntentService
+    from intent_router.core.config import DATA_DIR, Settings
+    from intent_router.core.logging import setup_logging
+    from intent_router.evaluation import load_cases
+    from intent_router.models.loader import load_sentence_model
+    from intent_router.services.intent_service import IntentService
 
     setup_logging("ERROR")
     rss_after_import = rss_mb()
@@ -83,8 +85,11 @@ def main() -> None:
         model_load_ms = (time.perf_counter() - t) * 1000
         rss_after_model = rss_mb()
         cold = IntentService(settings, model_name=model_name)
+        rss_after_index = rss_mb()
+        if args.verifier:  # loaded once, for the measured service only
+            settings = settings.model_copy(update={"verifier": "nli"})
         warm = IntentService(settings, model_name=model_name)  # second build reads the disk cache
-    rss_after_index = rss_mb()
+    rss_after_verifier = rss_mb()
     service = warm
     import torch as _torch
 
@@ -111,6 +116,18 @@ def main() -> None:
             stages["serialize_ms"].append((t2 - t1) * 1000)
             stages["wall_ms"].append((t1 - t0) * 1000)
 
+    # Requests the verifier checks (destructive / financial intents), with or without it.
+    side_effect_texts = ["Cancel my order 4421", "I want to return these shoes", "please cancel the laptop order",
+                         "I'd like to exchange this shirt for a bigger size", "Book a flight from Delhi to Mumbai",
+                         "Reserve a hotel in Goa for 2 nights", "I no longer want to cancel my order",
+                         "Keep my order 4421, no cancellation"]
+    side_effect_ms = []
+    for _ in range(args.repeat * 3):
+        for t in side_effect_texts:
+            t0 = time.perf_counter()
+            service.route(t, reference_date=ref)
+            side_effect_ms.append((time.perf_counter() - t0) * 1000)
+
     # Single-text embedding only, for reference.
     embed_only = []
     for t in texts[:60]:
@@ -135,6 +152,7 @@ def main() -> None:
         "machine": {"platform": platform.platform(), "processor": platform.processor(),
                     "cpu_count": os.cpu_count(), "python": platform.python_version()},
         "model": service.model_name,
+        "verifier": service.verifier.name,
         "torch_threads": _torch.get_num_threads(),
         "startup_ms": {
             "python_to_main": round((time.perf_counter() - _T_START) * 1000, 1),
@@ -144,9 +162,13 @@ def main() -> None:
             "intent_embeddings_from_cache": round(warm.startup_ms["intent_embeddings"], 1),
             "registry_and_extractors": round(warm.startup_ms["registry"] + warm.startup_ms["extractors"], 1),
             "registry_texts_embedded": service.index.num_texts,
+            "verifier_load": round(warm.startup_ms.get("verifier_load", 0.0), 1),
         },
         "memory_rss_mb": {"process_start": rss_start, "after_imports": rss_after_import,
-                          "after_model_load": rss_after_model, "after_two_indexes": rss_after_index},
+                          "after_model_load": rss_after_model, "after_first_index": rss_after_index,
+                          "after_measured_service": rss_after_verifier, "after_requests": rss_mb()},
+        "side_effect_requests_ms": {"p50": pct(side_effect_ms, 50), "p95": pct(side_effect_ms, 95),
+                                    "n": len(side_effect_ms)},
         "latency_ms": {k: {"p50": pct(v, 50), "p95": pct(v, 95), "mean": round(sum(v) / len(v), 3)}
                        for k, v in stages.items() if v},
         "embedding_only_single_text_ms": {"p50": pct(embed_only, 50), "p95": pct(embed_only, 95)},
@@ -156,7 +178,7 @@ def main() -> None:
                        "p50_ms": pct(conc_lat, 50), "p95_ms": pct(conc_lat, 95)},
     }
 
-    print(f"model: {results['model']}   torch threads: {results['torch_threads']}   "
+    print(f"model: {results['model']}   verifier: {results['verifier']}   torch threads: {results['torch_threads']}   "
           f"machine: {results['machine']['processor'] or results['machine']['platform']}")
     print("startup (ms):")
     for k, v in results["startup_ms"].items():
@@ -165,6 +187,7 @@ def main() -> None:
     print(f"latency per request over {results['requests_measured']} requests (ms):")
     for k, v in results["latency_ms"].items():
         print(f"  {k:14s} p50={v['p50']:>7}  p95={v['p95']:>7}  mean={v['mean']:>7}")
+    print("destructive/financial requests (ms):", results["side_effect_requests_ms"])
     print("embedding only, single text (ms):", results["embedding_only_single_text_ms"])
     print("concurrent:", results["concurrent"])
     if args.json:

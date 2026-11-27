@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from app.core.schemas import Status
+from intent_router.core.schemas import Status
 
 NON_COMMITTAL = {Status.unknown, Status.ambiguous, Status.needs_clarification}
 

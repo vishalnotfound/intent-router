@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import json
 
-from app.core.config import Thresholds
-from app.core.schemas import Status
-from app.router.fallback import FallbackChoice, LocalLLMFallback, NoFallback
+from intent_router.core.config import Thresholds
+from intent_router.core.schemas import Status
+from intent_router.router.fallback import FallbackChoice, LocalLLMFallback, NoFallback
 
 
 def test_parse_accepts_only_candidates_or_unknown():
